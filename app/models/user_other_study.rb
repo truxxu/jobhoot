@@ -1,0 +1,2 @@
+class UserOtherStudy < ApplicationRecord
+end

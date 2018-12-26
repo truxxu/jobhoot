@@ -1,0 +1,2 @@
+class UserTrait < ApplicationRecord
+end

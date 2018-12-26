@@ -1,0 +1,2 @@
+class UserStudy < ApplicationRecord
+end
