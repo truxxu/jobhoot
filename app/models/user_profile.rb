@@ -18,6 +18,8 @@ class UserProfile < ApplicationRecord
   validates :birth_date, presence: true
   validates :sex, presence: true, inclusion: { in: %w(Male Female Other) }
   validates :phone, presence: true, numericality: { only_integer: true }
-  validates :residency_status, presence: true, inclusion: { in: VISA }
-  validates :contract_type, presence: true, inclusion: { in: CONTRACT }
+  # validates :residency_status, presence: true
+  validates :residency_status, inclusion: { in: VISA }
+  # validates :contract_type, presence: true
+  validates :contract_type, inclusion: { in: CONTRACT }
 end
