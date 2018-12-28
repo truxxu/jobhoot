@@ -42,6 +42,7 @@ class UserProfileTest < ActiveSupport::TestCase
   end
 
   test "phone should be an integer" do
-    assert_match "/\A[+-]?\d+\z/", @user_profile.phone.to_s, @user_profile.errors.full_messages
+    @user_profile.phone = "1s2345"
+    assert_no_match "/\A[+-]?\d+\z/", @user_profile.phone.to_s, @user_profile.errors.full_messages
   end
 end

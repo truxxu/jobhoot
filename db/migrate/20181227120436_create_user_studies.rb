@@ -4,7 +4,7 @@ class CreateUserStudies < ActiveRecord::Migration[5.2]
       t.references :user_profile, foreign_key: true
       t.references :study, foreign_key: true
       t.string :status
-      t.string :type
+      t.string :study_type
       t.datetime :start_date
       t.datetime :end_date
 

@@ -110,7 +110,7 @@ ActiveRecord::Schema.define(version: 2018_12_27_120843) do
   create_table "user_other_studies", force: :cascade do |t|
     t.bigint "user_profile_id"
     t.bigint "other_study_id"
-    t.string "type"
+    t.string "study_type"
     t.datetime "start_date"
     t.datetime "end_date"
     t.datetime "created_at", null: false
@@ -146,7 +146,7 @@ ActiveRecord::Schema.define(version: 2018_12_27_120843) do
     t.bigint "user_profile_id"
     t.bigint "study_id"
     t.string "status"
-    t.string "type"
+    t.string "study_type"
     t.datetime "start_date"
     t.datetime "end_date"
     t.datetime "created_at", null: false

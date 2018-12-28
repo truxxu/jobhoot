@@ -10,7 +10,7 @@ class UserStudy < ApplicationRecord
                    "Graduate Diploma", "Master", "Doctor", "Other"]
 
   validates :status, presence: true, inclusion: { in: STUDY_STATUS }
-  validates :type, presence: true, inclusion: { in: STUDY_TYPE }
+  validates :study_type, presence: true, inclusion: { in: STUDY_TYPE }
   validates :start_date, presence: true
   validates :end_date, presence: true
 end
