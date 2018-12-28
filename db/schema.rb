@@ -120,6 +120,7 @@ ActiveRecord::Schema.define(version: 2018_12_27_120843) do
   end
 
   create_table "user_profiles", force: :cascade do |t|
+    t.bigint "user_id"
     t.string "name"
     t.string "last_name"
     t.datetime "birth_date"
@@ -129,6 +130,7 @@ ActiveRecord::Schema.define(version: 2018_12_27_120843) do
     t.string "contract_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_profiles_on_user_id"
   end
 
   create_table "user_skills", force: :cascade do |t|
@@ -193,6 +195,7 @@ ActiveRecord::Schema.define(version: 2018_12_27_120843) do
   add_foreign_key "user_languages", "user_profiles"
   add_foreign_key "user_other_studies", "other_studies"
   add_foreign_key "user_other_studies", "user_profiles"
+  add_foreign_key "user_profiles", "users"
   add_foreign_key "user_skills", "skills"
   add_foreign_key "user_skills", "user_profiles"
   add_foreign_key "user_studies", "studies"
