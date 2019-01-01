@@ -252,10 +252,7 @@ Devise.setup do |config|
 
   # The default HTTP method used to sign out a resource. Default is :delete.
 
-  # NEED TO CHANGE THIS!!! Adding the :get action is a quick fix and not
-  # recommended for security reasons. All seems to indicate that there might be
-  # an error with JQuery not performing the delete action.
-  config.sign_out_via = [:delete, :get]
+  config.sign_out_via = :delete
 
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
