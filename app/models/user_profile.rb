@@ -1,13 +1,13 @@
 class UserProfile < ApplicationRecord
   belongs_to :user
-  has_many :user_studies
-  has_many :user_other_studies
-  has_many :user_languages
-  has_many :work_preferences
-  has_many :user_experiences
-  has_many :user_skills
-  has_many :user_traits
-  has_many :user_hobbies
+  has_many :user_studies, dependent: :destroy
+  has_many :user_other_studies, dependent: :destroy
+  has_many :user_languages, dependent: :destroy
+  has_many :work_preferences, dependent: :destroy
+  has_many :user_experiences, dependent: :destroy
+  has_many :user_skills, dependent: :destroy
+  has_many :user_traits, dependent: :destroy
+  has_many :user_hobbies, dependent: :destroy
 
   VISA =      ["Australian Resident", "Student Visa", "Working Holiday Visa"]
   CONTRACT =  ["Casual", "Contractor", "Full Time", "Internship", "Part Time",
