@@ -59,7 +59,7 @@ user_trait = UserTrait.create(user_profile_id: user_profile.id, trait_id:
   trait.id)
 puts 'UserTrait created'
 
-hobby = Hobby.new(name: "Drawing", category: "something")
+hobby = Hobby.create(name: "Drawing", category: "something")
 puts 'Hobby created'
 
 user_hobby = UserHobby.create(user_profile_id: user_profile.id, hobby_id:
