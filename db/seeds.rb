@@ -5,6 +5,11 @@ OtherStudy.destroy_all
 Language.destroy_all
 Skill.destroy_all
 Trait.destroy_all
+UserStudy.destroy_all
+UserOtherStudy.destroy_all
+UserLanguage.destroy_all
+UserSkill.destroy_all
+UserTrait.destroy_all
 
 # studies
 CSV.foreach('data_tables/applicant/studies.csv') do |row|
@@ -53,36 +58,38 @@ user_profile = UserProfile.create(user_id: user.id, name: "Daniel", last_name:
     residency_status: "Australian Resident", contract_type: "Casual")
 puts 'UserProfile created'
 
-user_study = UserStudy.create(user_profile_id: user_profile.id, study_id: 31,
+UserStudy.create(user_profile_id: user_profile.id, study_id: 31,
   status: "Completed", study_type:"Master", start_date: "2005-01-15", end_date:
 "2010-12-15")
+
+UserStudy.create(user_profile_id: user_profile.id, study_id: 20,
+  status: "Completed", study_type:"Master", start_date: "2005-01-15", end_date:
+  "2010-12-15")
 puts 'UserStudy created'
 
-user_other_study = UserOtherStudy.create(user_profile_id: user_profile.id,
-other_study_id: 12, study_type: "Other", start_date: "2005-01-15",
-end_date: "2010-12-15")
+UserOtherStudy.create(user_profile_id: user_profile.id, other_study_id: 12,
+  study_type: "Other", start_date: "2005-01-15", end_date: "2010-12-15")
 puts 'UserOtherStudy created'
 
-user_language = UserLanguage.create(user_profile_id: user_profile.id,
-  language_id: 23, proficiency: 90)
+UserLanguage.create(user_profile_id: user_profile.id, language_id: 23,
+  proficiency: 90)
 puts 'UserLanguage created'
 
-work_preference = WorkPreference.create(user_profile_id: user_profile.id,
-position_id: position.id, objectives: "Something")
+WorkPreference.create(user_profile_id: user_profile.id, position_id: position.id,
+  objectives: "Something")
 puts 'WorkPreference created'
 
-user_skill = UserSkill.create(user_profile_id: user_profile.id, skill_id: 52)
+UserSkill.create(user_profile_id: user_profile.id, skill_id: 52)
 puts 'UserSkill created'
 
-user_experience = UserExperience.create(user_profile_id: user_profile.id,
-position_id: position.id, skill_id: 52, status: "Finished",
-company_name: "Continental", contract_type: "Full Time", description:
-"something", start_date: "2005-01-15", end_date: "2010-12-15")
+UserExperience.create(user_profile_id: user_profile.id, position_id: position.id,
+  skill_id: 52, status: "Finished", company_name: "Continental", contract_type:
+  "Full Time", description: "something", start_date: "2005-01-15", end_date:
+  "2010-12-15")
 puts 'UserExperience created'
 
-user_trait = UserTrait.create(user_profile_id: user_profile.id, trait_id: 8)
+UserTrait.create(user_profile_id: user_profile.id, trait_id: 8)
 puts 'UserTrait created'
 
-user_hobby = UserHobby.create(user_profile_id: user_profile.id, hobby_id:
-  hobby.id)
+UserHobby.create(user_profile_id: user_profile.id, hobby_id: hobby.id)
 puts 'UserHobby created'
