@@ -52,10 +52,12 @@ hobby = Hobby.create(name: "Drawing", category: "something")
 puts 'Hobby created'
 
 
-
-user_profile = UserProfile.create(user_id: user.id, name: "Daniel", last_name:
+url = "https://res.cloudinary.com/dsvpxb12b/image/upload/v1546510089/adult-beard-boy-220453.jpg"
+user_profile = UserProfile.new(user_id: user.id, name: "Daniel", last_name:
     "Trujillo", birth_date: "1987-12-30", sex: "Male", phone: 123456,
     residency_status: "Australian Resident", contract_type: "Casual")
+user_profile.remote_photo_url = url
+user_profile.save
 puts 'UserProfile created'
 
 UserStudy.create(user_profile_id: user_profile.id, study_id: 31,

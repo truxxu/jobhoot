@@ -5,6 +5,8 @@
 <p><strong>Birthdate:</strong> <%= @profile.birth_date.strftime("%F") %></p>
 <p><strong>Sex:</strong> <%= @profile.sex %></p>
 <p><strong>Phone:</strong> <%= @profile.phone %></p>
+<%= cl_image_tag(@profile.photo, width: 150, height: 150, crop: :thumb,
+gravity: :face) %>
 
 <hr>
 

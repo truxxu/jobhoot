@@ -29,4 +29,6 @@ class UserProfile < ApplicationRecord
   validates :residency_status, inclusion: { in: VISA }
   # validates :contract_type, presence: true
   validates :contract_type, inclusion: { in: CONTRACT }
+
+  mount_uploader :photo, PhotoUploader
 end
