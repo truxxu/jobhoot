@@ -119,14 +119,14 @@ gravity: :face) %>
       <% end %>
     <% end %>
   </p>
-  <p>
+<!--   <p>
     <strong>Skills:</strong>
     <% @skills.each do |t| %>
       <% if t.id == s.skill_id %>
         <%= t.name %>
       <% end %>
     <% end %>
-  </p>
+  </p> -->
   <p>
     <strong>Started at:</strong>
     <%= s.start_date.strftime("%F") %>

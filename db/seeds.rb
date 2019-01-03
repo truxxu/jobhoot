@@ -45,10 +45,14 @@ puts 'traits created'
 user = User.create(email: "df@gmail.com", password: "123456")
 puts 'User created'
 
-position = Position.create(title: "Manager")
+positiona = Position.create(title: "Manager")
+positionb = Position.create(title: "Cleaner")
+positionc = Position.create(title: "Mailman")
 puts 'Position created'
 
-hobby = Hobby.create(name: "Drawing", category: "something")
+hobbya = Hobby.create(name: "Drawing", category: "something")
+hobbyb = Hobby.create(name: "Photography", category: "something")
+hobbyc = Hobby.create(name: "Running", category: "something")
 puts 'Hobby created'
 
 
@@ -71,27 +75,44 @@ puts 'UserStudy created'
 
 UserOtherStudy.create(user_profile_id: user_profile.id, other_study_id: 12,
   study_type: "Other", start_date: "2005-01-15", end_date: "2010-12-15")
+UserOtherStudy.create(user_profile_id: user_profile.id, other_study_id: 4,
+  study_type: "Other", start_date: "2005-01-15", end_date: "2010-12-15")
 puts 'UserOtherStudy created'
 
 UserLanguage.create(user_profile_id: user_profile.id, language_id: 23,
   proficiency: 90)
+UserLanguage.create(user_profile_id: user_profile.id, language_id: 11,
+  proficiency: 50)
 puts 'UserLanguage created'
 
-WorkPreference.create(user_profile_id: user_profile.id, position_id: position.id,
+WorkPreference.create(user_profile_id: user_profile.id, position_id: positiona.id,
   objectives: "Something")
 puts 'WorkPreference created'
 
 UserSkill.create(user_profile_id: user_profile.id, skill_id: 52)
+UserSkill.create(user_profile_id: user_profile.id, skill_id: 42)
+UserSkill.create(user_profile_id: user_profile.id, skill_id: 50)
 puts 'UserSkill created'
 
-UserExperience.create(user_profile_id: user_profile.id, position_id: position.id,
-  skill_id: 52, status: "Finished", company_name: "Continental", contract_type:
+UserExperience.create(user_profile_id: user_profile.id, position_id: positiona.id,
+  skill_id: 10, status: "Finished", company_name: "Continental", contract_type:
+  "Full Time", description: "something", start_date: "2005-01-15", end_date:
+  "2010-12-15")
+UserExperience.create(user_profile_id: user_profile.id, position_id: positionb.id,
+  skill_id: 20, status: "Finished", company_name: "WG", contract_type:
+  "Full Time", description: "something", start_date: "2005-01-15", end_date:
+  "2010-12-15")
+UserExperience.create(user_profile_id: user_profile.id, position_id: positionc.id,
+  skill_id: 30, status: "Finished", company_name: "HorMinka", contract_type:
   "Full Time", description: "something", start_date: "2005-01-15", end_date:
   "2010-12-15")
 puts 'UserExperience created'
 
 UserTrait.create(user_profile_id: user_profile.id, trait_id: 8)
+UserTrait.create(user_profile_id: user_profile.id, trait_id: 6)
 puts 'UserTrait created'
 
-UserHobby.create(user_profile_id: user_profile.id, hobby_id: hobby.id)
+UserHobby.create(user_profile_id: user_profile.id, hobby_id: hobbya.id)
+UserHobby.create(user_profile_id: user_profile.id, hobby_id: hobbyb.id)
+UserHobby.create(user_profile_id: user_profile.id, hobby_id: hobbyc.id)
 puts 'UserHobby created'
