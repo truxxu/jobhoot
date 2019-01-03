@@ -15,4 +15,30 @@ class UserProfilesController < ApplicationController
     @traits = @profile.traits
     @hobbies = @profile.hobbies
   end
+
+  def new
+    @profile = UserProfile.new
+  end
+
+  def create
+    @profile = UserProfile.new(profile_params)
+    @profile.user = current_user
+    if @profile.save
+      redirect_to user_profile_path(:id)
+    else
+      render new_user_profile_path
+      puts @profile.errors.full_messages
+    end
+  end
+
+  def destroy
+
+  end
+
+  private
+
+  def profile_params
+    params.require(:user_profile).permit(:user_id, :name, :last_name, :photo,
+                                         :birth_date, :sex, :phone, :photo_cache)
+  end
 end

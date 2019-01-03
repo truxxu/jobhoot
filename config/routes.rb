@@ -6,5 +6,5 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
   root to: 'pages#home'
-  resources :user_profiles, only: [:show]
+  resources :user_profiles, only: [:show, :new, :create, :destroy]
 end
