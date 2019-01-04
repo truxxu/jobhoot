@@ -31,10 +31,6 @@ class UserProfilesController < ApplicationController
     end
   end
 
-  def destroy
-
-  end
-
   private
 
   def profile_params

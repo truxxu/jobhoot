@@ -11,6 +11,7 @@ gravity: :face) %>
 <hr>
 
 <h3>Studies</h3>
+<%= link_to "Add", new_user_study_path, class: "btn btn-primary" %>
 <% @user_studies.each do |s| %>
   <p>
     <strong>Title:</strong>
