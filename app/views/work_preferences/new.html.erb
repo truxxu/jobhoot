@@ -1,0 +1,8 @@
+<h3>Add your Working Preferences to your Profile</h3>
+<%= simple_form_for(@preference) do |f| %>
+  <%= f.association :position %>
+  <%= f.input :objectives, as: :text %>
+  <%= f.button :submit, class: "btn btn-primary" %>
+
+<% end %>
+

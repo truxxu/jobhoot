@@ -1,24 +1,25 @@
-<h2>Welcome, <%= @profile.name %></h2>
-
+<h2 class="text-center">Welcome, <%= @profile.name %></h2>
+<h3>About Me</h3>
+<% if @profile.photo? %>
+  <%= cl_image_tag(@profile.photo, width: 150, height: 150, crop: :thumb,
+                   gravity: :face) %>
+<% else %>
+  <p>*Add a profile photo*</p>
+<% end %>
 <p><strong>First Name:</strong> <%= @profile.name %></p>
 <p><strong>Last Name:</strong> <%= @profile.last_name %></p>
 <p><strong>Birthdate:</strong> <%= @profile.birth_date.strftime("%F") %></p>
 <p><strong>Sex:</strong> <%= @profile.sex %></p>
 <p><strong>Phone:</strong> <%= @profile.phone %></p>
-<%= cl_image_tag(@profile.photo, width: 150, height: 150, crop: :thumb,
-gravity: :face) %>
 
 <hr>
 
 <h3>Studies</h3>
+<%= link_to "Add", new_user_study_path, class: "btn btn-primary" %>
 <% @user_studies.each do |s| %>
   <p>
     <strong>Title:</strong>
-    <% @studies.each do |t| %>
-      <% if t.id == s.study_id %>
-        <%= t.title %>
-      <% end %>
-    <% end %>
+    <%= s.study.title %>
   </p>
   <p>
     <strong>Degree:</strong>
@@ -40,14 +41,11 @@ gravity: :face) %>
 <hr>
 
 <h3>Other Studies</h3>
+<%= link_to "Add", new_user_other_study_path, class: "btn btn-primary" %>
 <% @user_other_studies.each do |s| %>
   <p>
     <strong>Title:</strong>
-    <% @other_studies.each do |t| %>
-      <% if t.id == s.other_study_id %>
-        <%= t.title %>
-      <% end %>
-    <% end %>
+    <%= s.other_study.title %>
   </p>
   <p>
     <strong>Type:</strong>
@@ -65,14 +63,11 @@ gravity: :face) %>
 <hr>
 
 <h3>Languages</h3>
+<%= link_to "Add", new_user_language_path, class: "btn btn-primary" %>
 <% @user_languages.each do |s| %>
   <p>
     <strong>Name:</strong>
-    <% @languages.each do |t| %>
-      <% if t.id == s.language_id %>
-        <%= t.name %>
-      <% end %>
-    <% end %>
+    <%=  s.language.name%>
   </p>
   <p>
     <strong>Proficiency:</strong>
@@ -83,7 +78,12 @@ gravity: :face) %>
 <hr>
 
 <h3>Work Preferences</h3>
+<%= link_to "Add", new_work_preference_path, class: "btn btn-primary" %>
 <% @preferences.each do |s| %>
+  <p>
+    <strong>Position:</strong>
+    <%= s.position.title %>
+  </p>
   <p>
     <strong>Objectives:</strong>
     <%= s.objectives %>
@@ -93,6 +93,7 @@ gravity: :face) %>
 <hr>
 
 <h3>Skills</h3>
+<%= link_to "Add", new_user_skill_path, class: "btn btn-primary" %>
 <% @skills.each do |t| %>
   <p>
     <%= t.name %>
@@ -102,31 +103,32 @@ gravity: :face) %>
 <hr>
 
 <h3>Working Experience</h3>
+<%= link_to "Add", new_user_experience_path, class: "btn btn-primary" %>
 <% @experiences.each do |s| %>
   <p>
     <strong>Company:</strong>
     <%= s.company_name %>
   </p>
   <p>
+    <strong>Position(s):</strong>
+    <%= s.position.title %>
+  </p>
+  <p>
     <strong>Contract Type:</strong>
     <%= s.contract_type %>
   </p>
   <p>
-    <strong>Position(s):</strong>
-    <% @positions.each do |t| %>
-      <% if t.id == s.position_id %>
-        <%= t.title %>
-      <% end %>
-    <% end %>
+    <strong>Description:</strong>
+    <%= s.description %>
   </p>
-<!--   <p>
+  <p>
     <strong>Skills:</strong>
-    <% @skills.each do |t| %>
-      <% if t.id == s.skill_id %>
-        <%= t.name %>
-      <% end %>
-    <% end %>
-  </p> -->
+    <%= s.skill.name %>
+  </p>
+  <p>
+    <strong>Status:</strong>
+    <%= s.status %>
+  </p>
   <p>
     <strong>Started at:</strong>
     <%= s.start_date.strftime("%F") %>
@@ -139,7 +141,8 @@ gravity: :face) %>
 
 <hr>
 
-<h3>Traits</h3>
+<h3>Personality Traits</h3>
+<%= link_to "Add", new_user_trait_path, class: "btn btn-primary" %>
 <% @traits.each do |t| %>
   <p>
     <strong>Name:</strong>
@@ -154,6 +157,7 @@ gravity: :face) %>
 <hr>
 
 <h3>Hobbies</h3>
+<%= link_to "Add", new_user_hobby_path, class: "btn btn-primary" %>
 <% @hobbies.each do |t| %>
   <p>
     <strong>Name:</strong>

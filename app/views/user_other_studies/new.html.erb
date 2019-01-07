@@ -1,0 +1,10 @@
+<h2>Add Other Studies to your Profile</h2>
+
+<%= simple_form_for @study do |f| %>
+  <%= f.association :other_study, label: "Title" %>
+  <%= f.input :study_type, collection: ["Certification", "License", "Course",
+                                        "Other"], label: "Type" %>
+  <%= f.input :start_date, as: :string, input_html: { class: 'datepicker start_date' } %>
+  <%= f.input :end_date, as: :string, input_html: { class: 'datepicker end_date' } %>
+  <%= f.button :submit, class: "btn btn-primary" %>
+<% end %>

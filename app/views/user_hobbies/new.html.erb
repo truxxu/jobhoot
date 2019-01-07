@@ -1,0 +1,6 @@
+<h2>Add a Hobby to your Profile</h2>
+
+<%= simple_form_for @hobby do |f| %>
+  <%= f.association :hobby %>
+  <%= f.button :submit, class: "btn btn-primary" %>
+<% end %>
