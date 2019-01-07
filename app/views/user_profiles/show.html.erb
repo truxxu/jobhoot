@@ -36,6 +36,7 @@
   <p><strong>Finished at:</strong>
     <%= s.end_date.strftime("%F") %>
   </p>
+  <%= link_to "Remove", user_study_path(s.id), method: :delete %>
 <% end %>
 
 <hr>

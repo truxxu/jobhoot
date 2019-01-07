@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   }
   root to: 'pages#home'
   resources :user_profiles, only: [:show, :new, :create]
-  resources :user_studies, only: [:new, :create]
+  resources :user_studies, only: [:new, :create, :destroy]
   resources :user_other_studies, only: [:new, :create]
   resources :user_languages, only: [:new, :create]
   resources :work_preferences, only: [:new, :create]
