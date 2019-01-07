@@ -13,8 +13,7 @@ class UserProfile < ApplicationRecord
   has_many :positions, through: :user_experiences
   has_many :user_traits, dependent: :destroy
   has_many :traits, through: :user_traits
-  has_many :user_hobbies, dependent: :destroy
-  has_many :hobbies, through: :user_hobbies
+  has_many :user_hobbies
 
   VISA =      ["Australian Resident", "Student Visa", "Working Holiday Visa"]
   CONTRACT =  ["Casual", "Contractor", "Full Time", "Internship", "Part Time",

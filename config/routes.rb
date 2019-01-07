@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  get 'work_preferences/new'
-  get 'user_languages/new'
-  get 'user_other_studies/new'
-  get 'user_other_studies/create'
   devise_for :companies, path: 'companies', controllers: {
     sessions: 'companies/sessions'
   }
