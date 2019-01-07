@@ -16,5 +16,6 @@ Rails.application.routes.draw do
   resources :user_languages, only: [:new, :create]
   resources :work_preferences, only: [:new, :create]
   resources :user_skills, only: [:new, :create]
+  resources :user_experiences, only: [:new, :create]
 
 end

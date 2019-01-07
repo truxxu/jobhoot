@@ -99,31 +99,32 @@ gravity: :face) %>
 <hr>
 
 <h3>Working Experience</h3>
+<%= link_to "Add", new_user_experience_path, class: "btn btn-primary" %>
 <% @experiences.each do |s| %>
   <p>
     <strong>Company:</strong>
     <%= s.company_name %>
   </p>
   <p>
+    <strong>Position(s):</strong>
+    <%= s.position.title %>
+  </p>
+  <p>
     <strong>Contract Type:</strong>
     <%= s.contract_type %>
   </p>
   <p>
-    <strong>Position(s):</strong>
-    <% @positions.each do |t| %>
-      <% if t.id == s.position_id %>
-        <%= t.title %>
-      <% end %>
-    <% end %>
+    <strong>Description:</strong>
+    <%= s.description %>
   </p>
-<!--   <p>
+  <p>
     <strong>Skills:</strong>
-    <% @skills.each do |t| %>
-      <% if t.id == s.skill_id %>
-        <%= t.name %>
-      <% end %>
-    <% end %>
-  </p> -->
+    <%= s.skill.name %>
+  </p>
+  <p>
+    <strong>Status:</strong>
+    <%= s.status %>
+  </p>
   <p>
     <strong>Started at:</strong>
     <%= s.start_date.strftime("%F") %>
