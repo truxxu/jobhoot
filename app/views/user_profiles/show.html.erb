@@ -89,6 +89,7 @@ gravity: :face) %>
 <hr>
 
 <h3>Skills</h3>
+<%= link_to "Add", new_user_skill_path, class: "btn btn-primary" %>
 <% @skills.each do |t| %>
   <p>
     <%= t.name %>
