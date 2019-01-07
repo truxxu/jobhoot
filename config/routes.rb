@@ -17,5 +17,7 @@ Rails.application.routes.draw do
   resources :work_preferences, only: [:new, :create]
   resources :user_skills, only: [:new, :create]
   resources :user_experiences, only: [:new, :create]
+  resources :user_traits, only: [:new, :create]
+  resources :user_hobbies, only: [:new, :create]
 
 end

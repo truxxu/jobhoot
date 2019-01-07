@@ -1,12 +1,16 @@
-<h2>Welcome, <%= @profile.name %></h2>
-
+<h2 class="text-center">Welcome, <%= @profile.name %></h2>
+<h3>About Me</h3>
+<% if @profile.photo? %>
+  <%= cl_image_tag(@profile.photo, width: 150, height: 150, crop: :thumb,
+                   gravity: :face) %>
+<% else %>
+  <p>*Add a profile photo*</p>
+<% end %>
 <p><strong>First Name:</strong> <%= @profile.name %></p>
 <p><strong>Last Name:</strong> <%= @profile.last_name %></p>
 <p><strong>Birthdate:</strong> <%= @profile.birth_date.strftime("%F") %></p>
 <p><strong>Sex:</strong> <%= @profile.sex %></p>
 <p><strong>Phone:</strong> <%= @profile.phone %></p>
-<%= cl_image_tag(@profile.photo, width: 150, height: 150, crop: :thumb,
-gravity: :face) %>
 
 <hr>
 
@@ -137,7 +141,8 @@ gravity: :face) %>
 
 <hr>
 
-<h3>Traits</h3>
+<h3>Personality Traits</h3>
+<%= link_to "Add", new_user_trait_path, class: "btn btn-primary" %>
 <% @traits.each do |t| %>
   <p>
     <strong>Name:</strong>
@@ -152,6 +157,7 @@ gravity: :face) %>
 <hr>
 
 <h3>Hobbies</h3>
+<%= link_to "Add", new_user_hobby_path, class: "btn btn-primary" %>
 <% @hobbies.each do |t| %>
   <p>
     <strong>Name:</strong>
