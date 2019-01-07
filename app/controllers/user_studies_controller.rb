@@ -15,6 +15,7 @@ class UserStudiesController < ApplicationController
   end
 
   private
+
   def study_params
     params.require(:user_study).permit(:user_profile_id, :study_id, :status,
                                          :study_type, :start_date, :end_date)

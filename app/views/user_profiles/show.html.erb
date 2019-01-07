@@ -15,11 +15,7 @@ gravity: :face) %>
 <% @user_studies.each do |s| %>
   <p>
     <strong>Title:</strong>
-    <% @studies.each do |t| %>
-      <% if t.id == s.study_id %>
-        <%= t.title %>
-      <% end %>
-    <% end %>
+    <%= s.study.title %>
   </p>
   <p>
     <strong>Degree:</strong>
@@ -41,14 +37,11 @@ gravity: :face) %>
 <hr>
 
 <h3>Other Studies</h3>
+<%= link_to "Add", new_user_other_study_path, class: "btn btn-primary" %>
 <% @user_other_studies.each do |s| %>
   <p>
     <strong>Title:</strong>
-    <% @other_studies.each do |t| %>
-      <% if t.id == s.other_study_id %>
-        <%= t.title %>
-      <% end %>
-    <% end %>
+    <%= s.other_study.title %>
   </p>
   <p>
     <strong>Type:</strong>
@@ -66,14 +59,11 @@ gravity: :face) %>
 <hr>
 
 <h3>Languages</h3>
+<%= link_to "Add", new_user_language_path, class: "btn btn-primary" %>
 <% @user_languages.each do |s| %>
   <p>
     <strong>Name:</strong>
-    <% @languages.each do |t| %>
-      <% if t.id == s.language_id %>
-        <%= t.name %>
-      <% end %>
-    <% end %>
+    <%=  s.language.name%>
   </p>
   <p>
     <strong>Proficiency:</strong>
@@ -84,7 +74,12 @@ gravity: :face) %>
 <hr>
 
 <h3>Work Preferences</h3>
+<%= link_to "Add", new_work_preference_path, class: "btn btn-primary" %>
 <% @preferences.each do |s| %>
+  <p>
+    <strong>Position:</strong>
+    <%= s.position.title %>
+  </p>
   <p>
     <strong>Objectives:</strong>
     <%= s.objectives %>
