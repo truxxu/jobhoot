@@ -17,6 +17,6 @@ class UserHobbiesController < ApplicationController
   private
 
   def hobby_params
-    params.require(:user_hobby).permit(:user_profile_id, :hobby_id)
+    params.require(:user_hobby).permit(:user_profile_id, :name, :category)
   end
 end

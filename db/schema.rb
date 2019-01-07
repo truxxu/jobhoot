@@ -27,13 +27,6 @@ ActiveRecord::Schema.define(version: 2019_01_03_102258) do
     t.index ["reset_password_token"], name: "index_companies_on_reset_password_token", unique: true
   end
 
-  create_table "hobbies", force: :cascade do |t|
-    t.string "name"
-    t.string "category"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "languages", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -91,10 +84,10 @@ ActiveRecord::Schema.define(version: 2019_01_03_102258) do
 
   create_table "user_hobbies", force: :cascade do |t|
     t.bigint "user_profile_id"
-    t.bigint "hobby_id"
+    t.string "name"
+    t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["hobby_id"], name: "index_user_hobbies_on_hobby_id"
     t.index ["user_profile_id"], name: "index_user_hobbies_on_user_profile_id"
   end
 
@@ -191,7 +184,6 @@ ActiveRecord::Schema.define(version: 2019_01_03_102258) do
   add_foreign_key "user_experiences", "positions"
   add_foreign_key "user_experiences", "skills"
   add_foreign_key "user_experiences", "user_profiles"
-  add_foreign_key "user_hobbies", "hobbies"
   add_foreign_key "user_hobbies", "user_profiles"
   add_foreign_key "user_languages", "languages"
   add_foreign_key "user_languages", "user_profiles"

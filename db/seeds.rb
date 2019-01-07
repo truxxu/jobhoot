@@ -4,12 +4,15 @@ Study.destroy_all
 OtherStudy.destroy_all
 Language.destroy_all
 Skill.destroy_all
+Position.destroy_all
 Trait.destroy_all
 UserStudy.destroy_all
 UserOtherStudy.destroy_all
 UserLanguage.destroy_all
+UserExperience.destroy_all
 UserSkill.destroy_all
 UserTrait.destroy_all
+UserHobby.destroy_all
 
 # studies
 CSV.foreach('data_tables/applicant/studies.csv') do |row|
@@ -49,11 +52,6 @@ positiona = Position.create(title: "Manager")
 positionb = Position.create(title: "Cleaner")
 positionc = Position.create(title: "Mailman")
 puts 'Position created'
-
-hobbya = Hobby.create(name: "Drawing", category: "something")
-hobbyb = Hobby.create(name: "Photography", category: "something")
-hobbyc = Hobby.create(name: "Running", category: "something")
-puts 'Hobby created'
 
 
 url = "https://res.cloudinary.com/dsvpxb12b/image/upload/v1546510089/adult-beard-boy-220453.jpg"
@@ -112,7 +110,10 @@ UserTrait.create(user_profile_id: user_profile.id, trait_id: 8)
 UserTrait.create(user_profile_id: user_profile.id, trait_id: 6)
 puts 'UserTrait created'
 
-UserHobby.create(user_profile_id: user_profile.id, hobby_id: hobbya.id)
-UserHobby.create(user_profile_id: user_profile.id, hobby_id: hobbyb.id)
-UserHobby.create(user_profile_id: user_profile.id, hobby_id: hobbyc.id)
+UserHobby.create(user_profile_id: user_profile.id, name: "Running",
+  category: "Outdoor Recreation")
+UserHobby.create(user_profile_id: user_profile.id, name: "Football",
+  category: "Outdoor Recreation")
+UserHobby.create(user_profile_id: user_profile.id, name: "Painting",
+  category: "Other")
 puts 'UserHobby created'
