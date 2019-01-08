@@ -6,10 +6,6 @@
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
-
-   <!--  <a href="" class="navbar-wagon-item navbar-wagon-link">Element A</a>
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Element B</a>
- -->
     <!-- Profile picture with dropdown list -->
     <% if user_signed_in? %>
       <div class="navbar-wagon-item">
@@ -17,13 +13,17 @@
           <%= image_tag "profile.png", alt: "profile picture", height: "32px",
           class: "dropdown-toggle", "data-toggle" => "dropdown"; %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-
             <li>
-              <%= link_to new_user_profile_path, method: :get do %>
-               <i class="fas fa-user"></i>  <%= t(".user_profiles", default: "New") %>
+              <% if !current_user.user_profile.nil? %>
+                <%= link_to user_profile_path(current_user.user_profile.id) do %>
+                  <i class="fas fa-user"></i>  <%= t(".user_profiles", default: "Profile") %>
+                <% end %>
+              <% else %>
+                <%= link_to new_user_profile_path do %>
+                  <i class="fas fa-user"></i>  <%= t(".user_profiles", default: "Profile") %>
+                <% end %>
               <% end %>
             </li>
-            <li><a href="#">Dashboard</a></li>
             <li>
               <%= link_to destroy_user_session_path, method: :delete do %>
                <i class="fas fa-sign-out-alt"></i>  <%= t(".sign_out", default: "Log out") %>

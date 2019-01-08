@@ -1,0 +1,5 @@
+<%= simple_form_for @language do |f| %>
+  <%= f.association :language, label: "Name" %>
+  <%= f.input :proficiency, collection: 1..100 %>
+  <%= f.button :submit, class: "btn btn-primary" %>
+<% end %>

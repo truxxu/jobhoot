@@ -8,7 +8,6 @@ class CreateUserProfiles < ActiveRecord::Migration[5.2]
       t.string :sex
       t.integer :phone
       t.string :residency_status
-      t.string :contract_type
 
       t.timestamps
     end
