@@ -9,9 +9,11 @@
 <p><strong>First Name:</strong> <%= @profile.name %></p>
 <p><strong>Last Name:</strong> <%= @profile.last_name %></p>
 <p><strong>Birthdate:</strong> <%= @profile.birth_date.strftime("%F") %></p>
+<p><strong>Age:</strong> <%= @age %></p>
 <p><strong>Sex:</strong> <%= @profile.sex %></p>
 <p><strong>E-mail:</strong> <%= @user.email %></p>
 <p><strong>Phone:</strong> <%= @profile.phone %></p>
+<p><strong>Residency Status:</strong> <%= @profile.residency_status %></p>
 
 <hr>
 
@@ -90,6 +92,10 @@
   <p>
     <strong>Position:</strong>
     <%= s.position.title %>
+  </p>
+  <p>
+    <strong>Contract Type:</strong>
+    <%= s.contract_type %>
   </p>
   <p>
     <strong>Objectives:</strong>

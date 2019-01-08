@@ -121,7 +121,6 @@ ActiveRecord::Schema.define(version: 2019_01_03_102258) do
     t.string "sex"
     t.integer "phone"
     t.string "residency_status"
-    t.string "contract_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "photo"
@@ -175,6 +174,7 @@ ActiveRecord::Schema.define(version: 2019_01_03_102258) do
     t.bigint "user_profile_id"
     t.bigint "position_id"
     t.text "objectives"
+    t.string "contract_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["position_id"], name: "index_work_preferences_on_position_id"

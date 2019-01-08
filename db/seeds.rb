@@ -57,7 +57,7 @@ puts 'Position created'
 url = "https://res.cloudinary.com/dsvpxb12b/image/upload/v1546510089/adult-beard-boy-220453.jpg"
 user_profile = UserProfile.new(user_id: user.id, name: "Daniel", last_name:
     "Trujillo", birth_date: "1987-12-30", sex: "Male", phone: 123456,
-    residency_status: "Australian Resident", contract_type: "Casual")
+    residency_status: "Australian Resident")
 user_profile.remote_photo_url = url
 user_profile.save
 puts 'UserProfile created'
@@ -84,7 +84,7 @@ UserLanguage.create(user_profile_id: user_profile.id, language_id: 11,
 puts 'UserLanguage created'
 
 WorkPreference.create(user_profile_id: user_profile.id, position_id: positiona.id,
-  objectives: "Something")
+  objectives: "Something", contract_type: "Casual")
 puts 'WorkPreference created'
 
 UserSkill.create(user_profile_id: user_profile.id, skill_id: 52)

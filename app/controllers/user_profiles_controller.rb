@@ -10,6 +10,8 @@ class UserProfilesController < ApplicationController
     @experiences = @profile.user_experiences
     @traits = @profile.user_traits
     @hobbies = @profile.user_hobbies
+    time_delta = Time.now.to_i - @profile.birth_date.to_i
+    @age = time_delta / 31_557_600 # seconds in a year
   end
 
   def new
@@ -31,6 +33,7 @@ class UserProfilesController < ApplicationController
 
   def profile_params
     params.require(:user_profile).permit(:user_id, :name, :last_name, :photo,
-                                         :birth_date, :sex, :phone, :photo_cache)
+                                         :birth_date, :residency_status, :sex,
+                                         :phone, :photo_cache)
   end
 end

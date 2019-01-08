@@ -1,5 +1,8 @@
 <%= simple_form_for(@preference) do |f| %>
   <%= f.association :position %>
+  <%= f.input :contract_type, collection: ["Casual", "Contractor", "Full Time",
+                                           "Internship", "Part Time",
+                                           "Volunteer", "Work Experience"] %>
   <%= f.input :objectives, as: :text %>
   <%= f.button :submit, class: "btn btn-primary" %>
 <% end %>
