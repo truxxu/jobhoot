@@ -1,0 +1,5 @@
+<%= simple_form_for(@preference) do |f| %>
+  <%= f.association :position %>
+  <%= f.input :objectives, as: :text %>
+  <%= f.button :submit, class: "btn btn-primary" %>
+<% end %>

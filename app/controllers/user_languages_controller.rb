@@ -20,6 +20,21 @@ class UserLanguagesController < ApplicationController
     redirect_to user_profile_path(:user_profile_id)
   end
 
+  def edit
+    @language = UserLanguage.find(params[:id])
+  end
+
+  def update
+    @language = UserLanguage.find(params[:id])
+    @language.update(lang_params)
+    if @language.save
+      redirect_to user_profile_path(:user_profile_id)
+    else
+      render new_user_language_path
+      puts @language.errors.full_messages
+    end
+  end
+
   private
 
   def lang_params

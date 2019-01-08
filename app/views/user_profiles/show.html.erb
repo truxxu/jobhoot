@@ -78,6 +78,7 @@
     <strong>Proficiency:</strong>
     <%= s.proficiency %>
   </p>
+  <%= link_to "Edit", edit_user_language_path(s.id)%>
   <%= link_to "Remove", user_language_path(s.id), method: :delete %>
 <% end %>
 
@@ -94,6 +95,7 @@
     <strong>Objectives:</strong>
     <%= s.objectives %>
   </p>
+  <%= link_to "Edit", edit_work_preference_path(s.id)%>
   <%= link_to "Remove", work_preference_path(s.id), method: :delete %>
 <% end %>
 
