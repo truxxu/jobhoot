@@ -147,6 +147,7 @@
     <strong>Finished at:</strong>
     <%= s.end_date.strftime("%F") %>
   </p>
+  <%= link_to "Edit", edit_user_experience_path(s.id)%>
   <%= link_to "Remove", user_experience_path(s.id), method: :delete %>
 <% end %>
 
@@ -179,6 +180,7 @@
     <strong>Category:</strong>
     <%= t.category %>
   </p>
+  <%= link_to "Edit", edit_user_hobby_path(t.id)%>
   <%= link_to "Remove", user_hobby_path(t.id), method: :delete %>
 <% end %>
 

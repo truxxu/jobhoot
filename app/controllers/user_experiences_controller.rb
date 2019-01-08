@@ -20,6 +20,21 @@ class UserExperiencesController < ApplicationController
     redirect_to user_profile_path(:user_profile_id)
   end
 
+  def edit
+    @experience = UserExperience.find(params[:id])
+  end
+
+  def update
+    @experience = UserExperience.find(params[:id])
+    @experience.update(experience_params)
+    if @experience.save
+      redirect_to user_profile_path(:user_profile_id)
+    else
+      render new_user_experience_path
+      puts @experience.errors.full_messages
+    end
+  end
+
   private
 
   def experience_params

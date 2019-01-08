@@ -20,6 +20,21 @@ class UserHobbiesController < ApplicationController
     redirect_to user_profile_path(:user_profile_id)
   end
 
+  def edit
+    @hobby = UserHobby.find(params[:id])
+  end
+
+  def update
+    @hobby = UserHobby.find(params[:id])
+    @hobby.update(hobby_params)
+    if @hobby.save
+      redirect_to user_profile_path(:user_profile_id)
+    else
+      render new_user_hobby_path
+      puts @hobby.errors.full_messages
+    end
+  end
+
   private
 
   def hobby_params
