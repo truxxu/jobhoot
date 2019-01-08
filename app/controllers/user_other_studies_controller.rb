@@ -14,6 +14,12 @@ class UserOtherStudiesController < ApplicationController
     end
   end
 
+  def destroy
+    @study = UserOtherStudy.find(params[:id])
+    @study.destroy
+    redirect_to user_profile_path(:user_profile_id)
+  end
+
   private
   def study_params
     params.require(:user_other_study).permit(:user_profile_id, :other_study_id,

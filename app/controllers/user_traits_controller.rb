@@ -14,6 +14,12 @@ class UserTraitsController < ApplicationController
     end
   end
 
+  def destroy
+    @trait = UserTrait.find(params[:id])
+    @trait.destroy
+    redirect_to user_profile_path(:user_profile_id)
+  end
+
   private
 
   def trait_params

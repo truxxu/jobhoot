@@ -14,6 +14,12 @@ class UserExperiencesController < ApplicationController
     end
   end
 
+  def destroy
+    @experience = UserExperience.find(params[:id])
+    @experience.destroy
+    redirect_to user_profile_path(:user_profile_id)
+  end
+
   private
 
   def experience_params

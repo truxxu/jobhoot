@@ -14,6 +14,12 @@ class WorkPreferencesController < ApplicationController
     end
   end
 
+  def destroy
+    @preference = WorkPreference.find(params[:id])
+    @preference.destroy
+    redirect_to user_profile_path(:user_profile_id)
+  end
+
   private
 
   def preference_params

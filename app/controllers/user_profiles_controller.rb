@@ -6,9 +6,9 @@ class UserProfilesController < ApplicationController
     @user_other_studies = @profile.user_other_studies
     @user_languages = @profile.user_languages
     @preferences = @profile.work_preferences
-    @skills = @profile.skills
+    @skills = @profile.user_skills
     @experiences = @profile.user_experiences
-    @traits = @profile.traits
+    @traits = @profile.user_traits
     @hobbies = @profile.user_hobbies
   end
 

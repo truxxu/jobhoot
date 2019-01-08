@@ -10,6 +10,7 @@
 <p><strong>Last Name:</strong> <%= @profile.last_name %></p>
 <p><strong>Birthdate:</strong> <%= @profile.birth_date.strftime("%F") %></p>
 <p><strong>Sex:</strong> <%= @profile.sex %></p>
+<p><strong>E-mail:</strong> <%= @user.email %></p>
 <p><strong>Phone:</strong> <%= @profile.phone %></p>
 
 <hr>
@@ -59,6 +60,7 @@
   <p><strong>Finished at:</strong>
     <%= s.end_date.strftime("%F") %>
   </p>
+  <%= link_to "Remove", user_other_study_path(s.id), method: :delete %>
 <% end %>
 
 <hr>
@@ -74,6 +76,7 @@
     <strong>Proficiency:</strong>
     <%= s.proficiency %>
   </p>
+  <%= link_to "Remove", user_language_path(s.id), method: :delete %>
 <% end %>
 
 <hr>
@@ -89,6 +92,7 @@
     <strong>Objectives:</strong>
     <%= s.objectives %>
   </p>
+  <%= link_to "Remove", work_preference_path(s.id), method: :delete %>
 <% end %>
 
 <hr>
@@ -97,8 +101,9 @@
 <%= link_to "Add", new_user_skill_path, class: "btn btn-primary" %>
 <% @skills.each do |t| %>
   <p>
-    <%= t.name %>
+    <%= t.skill.name %>
   </p>
+  <%= link_to "Remove", user_skill_path(t.id), method: :delete %>
 <% end %>
 
 <hr>
@@ -138,6 +143,7 @@
     <strong>Finished at:</strong>
     <%= s.end_date.strftime("%F") %>
   </p>
+  <%= link_to "Remove", user_experience_path(s.id), method: :delete %>
 <% end %>
 
 <hr>
@@ -147,12 +153,13 @@
 <% @traits.each do |t| %>
   <p>
     <strong>Name:</strong>
-    <%= t.name %>
+    <%= t.trait.name %>
   </p>
   <p>
     <strong>Description:</strong>
-    <%= t.description %>
+    <%= t.trait.description %>
   </p>
+  <%= link_to "Remove", user_trait_path(t.id), method: :delete %>
 <% end %>
 
 <hr>
@@ -168,5 +175,6 @@
     <strong>Category:</strong>
     <%= t.category %>
   </p>
+  <%= link_to "Remove", user_hobby_path(t.id), method: :delete %>
 <% end %>
 

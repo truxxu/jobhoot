@@ -14,6 +14,12 @@ class UserLanguagesController < ApplicationController
     end
   end
 
+  def destroy
+    @language = UserLanguage.find(params[:id])
+    @language.destroy
+    redirect_to user_profile_path(:user_profile_id)
+  end
+
   private
 
   def lang_params
