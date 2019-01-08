@@ -8,7 +8,9 @@ class UserLanguagesController < ApplicationController
     @language.user_profile = current_user.user_profile
     if @language.save
       redirect_to user_profile_path(:user_profile_id)
+      flash[:notice] = "Language Added"
     else
+      flash[:alert] = "Please verify the following information:"
       render new_user_language_path
       puts @language.errors.full_messages
     end
@@ -18,6 +20,7 @@ class UserLanguagesController < ApplicationController
     @language = UserLanguage.find(params[:id])
     @language.destroy
     redirect_to user_profile_path(:user_profile_id)
+    flash[:alert] = "Language Removed"
   end
 
   def edit
@@ -29,7 +32,9 @@ class UserLanguagesController < ApplicationController
     @language.update(lang_params)
     if @language.save
       redirect_to user_profile_path(:user_profile_id)
+      flash[:notice] = "Language Updated"
     else
+      flash[:alert] = "Please verify the following information:"
       render new_user_language_path
       puts @language.errors.full_messages
     end

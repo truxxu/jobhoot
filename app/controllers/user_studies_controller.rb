@@ -8,7 +8,9 @@ class UserStudiesController < ApplicationController
     @study.user_profile = current_user.user_profile
     if @study.save
       redirect_to user_profile_path(:user_profile_id)
+      flash[:notice] = "Study Added"
     else
+      flash[:alert] = "Please verify the following information:"
       render new_user_study_path
       puts @study.errors.full_messages
     end
@@ -18,6 +20,7 @@ class UserStudiesController < ApplicationController
     @study = UserStudy.find(params[:id])
     @study.destroy
     redirect_to user_profile_path(:user_profile_id)
+    flash[:alert] = "Study Removed"
   end
 
   def edit
@@ -29,7 +32,9 @@ class UserStudiesController < ApplicationController
     @study.update(study_params)
     if @study.save
       redirect_to user_profile_path(:user_profile_id)
+      flash[:notice] = "Study Updated"
     else
+      flash[:alert] = "Please verify the following information:"
       render new_user_study_path
       puts @study.errors.full_messages
     end

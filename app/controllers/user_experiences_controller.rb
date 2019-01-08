@@ -8,7 +8,9 @@ class UserExperiencesController < ApplicationController
     @experience.user_profile = current_user.user_profile
     if @experience.save
       redirect_to user_profile_path(:user_profile_id)
+      flash[:notice] = "Experience Added"
     else
+      flash[:alert] = "Please verify the following information:"
       render new_user_experience_path
       puts @experience.errors.full_messages
     end
@@ -18,6 +20,7 @@ class UserExperiencesController < ApplicationController
     @experience = UserExperience.find(params[:id])
     @experience.destroy
     redirect_to user_profile_path(:user_profile_id)
+    flash[:alert] = "Experience Removed"
   end
 
   def edit
@@ -29,7 +32,9 @@ class UserExperiencesController < ApplicationController
     @experience.update(experience_params)
     if @experience.save
       redirect_to user_profile_path(:user_profile_id)
+      flash[:notice] = "Experience Updated"
     else
+      flash[:alert] = "Please verify the following information:"
       render new_user_experience_path
       puts @experience.errors.full_messages
     end

@@ -8,7 +8,9 @@ class UserSkillsController < ApplicationController
     @skill.user_profile = current_user.user_profile
     if @skill.save
       redirect_to user_profile_path(:user_profile_id)
+      flash[:notice] = "Skill Added"
     else
+      flash[:alert] = "Please verify the following information:"
       render new_user_skill_path
       puts @skill.errors.full_messages
     end
@@ -18,6 +20,7 @@ class UserSkillsController < ApplicationController
     @skill = UserSkill.find(params[:id])
     @skill.destroy
     redirect_to user_profile_path(:user_profile_id)
+    flash[:alert] = "Skill Removed"
   end
 
   private

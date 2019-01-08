@@ -8,7 +8,9 @@ class WorkPreferencesController < ApplicationController
     @preference.user_profile = current_user.user_profile
     if @preference.save
       redirect_to user_profile_path(:user_profile_id)
+      flash[:notice] = "Preference Added"
     else
+      flash[:alert] = "Please verify the following information:"
       render new_work_preference_path
       puts @preference.errors.full_messages
     end
@@ -18,6 +20,7 @@ class WorkPreferencesController < ApplicationController
     @preference = WorkPreference.find(params[:id])
     @preference.destroy
     redirect_to user_profile_path(:user_profile_id)
+    flash[:alert] = "Preference Removed"
   end
 
   def edit
@@ -29,7 +32,9 @@ class WorkPreferencesController < ApplicationController
     @preference.update(preference_params)
     if @preference.save
       redirect_to user_profile_path(:user_profile_id)
+      flash[:notice] = "Preference Updated"
     else
+      flash[:alert] = "Please verify the following information:"
       render new_work_preference_path
       puts @preference.errors.full_messages
     end
