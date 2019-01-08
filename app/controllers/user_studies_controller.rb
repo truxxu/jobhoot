@@ -20,6 +20,21 @@ class UserStudiesController < ApplicationController
     redirect_to user_profile_path(:user_profile_id)
   end
 
+  def edit
+    @study = UserStudy.find(params[:id])
+  end
+
+  def update
+    @study = UserStudy.find(params[:id])
+    @study.update(study_params)
+    if @study.save
+      redirect_to user_profile_path(:user_profile_id)
+    else
+      render new_user_study_path
+      puts @study.errors.full_messages
+    end
+  end
+
   private
 
   def study_params
