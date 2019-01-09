@@ -16,7 +16,7 @@
   <%= f.input :phone, as: :tel %>
   <%= f.input :residence_country, collection:
   CountryStateSelect.countries_collection, label: "Country of Residence" %>
-  <%= f.input :address %>
+  <%= f.input :address, placeholder: "27 O'Connell St, Sydney" %>
   <%= f.button :submit, class: "btn btn-primary" %>
 
 <% end %>

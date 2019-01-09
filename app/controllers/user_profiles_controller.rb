@@ -12,6 +12,8 @@ class UserProfilesController < ApplicationController
     @hobbies = @profile.user_hobbies
     time_delta = Time.now.to_i - @profile.birth_date.to_i
     @age = time_delta / 31_557_600 # seconds in a year
+    @origin_country = country_name(@profile.origin_country)
+    @residence_country = country_name(@profile.residence_country)
   end
 
   def new
@@ -34,6 +36,11 @@ class UserProfilesController < ApplicationController
   def profile_params
     params.require(:user_profile).permit(:user_id, :name, :last_name, :photo,
                                          :birth_date, :residency_status, :sex,
-                                         :phone, :photo_cache)
+                                         :phone, :photo_cache, :origin_country,
+                                         :residence_country, :address)
+  end
+
+  def country_name(country_code)
+    CountryStateSelect.countries_collection.to_h.key(country_code.to_sym)
   end
 end
