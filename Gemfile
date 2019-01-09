@@ -17,6 +17,8 @@ gem 'webpacker'
 gem 'devise'
 gem 'cloudinary', '~> 1.9.1'
 gem 'carrierwave', '~> 1.2'
+gem 'country_state_select', '~> 3.0', '>= 3.0.3'
+gem 'geocoder', '~> 1.5'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
