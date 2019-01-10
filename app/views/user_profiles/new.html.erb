@@ -1,23 +1,6 @@
 <h2>Create a new Profile</h2>
-<h3>About you</h3>
-<%= simple_form_for(@profile) do |f| %>
-  <%= f.input :name, label: "First Name" %>
-  <%= f.input :last_name %>
-  <%= f.input :photo %>
-  <%= f.input :photo_cache, as: :hidden %>
-  <%= f.input :birth_date, as: :string, input_html:
-  { class: 'datepicker birth_date' } %>
-  <%= f.input :sex, collection: [:Male, :Female, :Other] %>
-  <%= f.input :origin_country, collection:
-  CountryStateSelect.countries_collection, label: "Country of Origin" %>
-  <%= f.input :residency_status, collection: ["Australian Resident",
-                                              "Student Visa",
-                                              "Working Holiday Visa"] %>
-  <%= f.input :phone, as: :tel %>
-  <%= f.input :residence_country, collection:
-  CountryStateSelect.countries_collection, label: "Country of Residence" %>
-  <%= f.input :address, placeholder: "27 O'Connell St, Sydney" %>
-  <%= f.button :submit, class: "btn btn-primary" %>
 
-<% end %>
+<%= render 'form' %>
+
+<%= link_to "Go Back", user_profile_path(current_user.user_profile.id) %>
 

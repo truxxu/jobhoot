@@ -17,6 +17,8 @@
 <p><strong>Phone:</strong> <%= @profile.phone %></p>
 <p><strong>Country of Residence:</strong> <%= @residence_country %></p>
 <p><strong>Address:</strong> <%= @profile.address %></p>
+<%= link_to "Edit", edit_user_profile_path(@profile.id)%>
+
 
 <hr>
 

@@ -1,3 +1,5 @@
 <h3>Add your Working Preferences to your Profile</h3>
 
 <%= render 'form' %>
+
+<%= link_to "Go Back", user_profile_path(current_user.user_profile.id) %>
