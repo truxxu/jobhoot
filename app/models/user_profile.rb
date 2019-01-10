@@ -24,6 +24,11 @@ class UserProfile < ApplicationRecord
   validates :phone, presence: true, numericality: { only_integer: true }
   validates :residency_status, presence: true
   validates :residency_status, inclusion: { in: VISA }
+  validates :origin_country, presence: true
+  validates :residence_country, presence: true
+  validates :address, presence: true
 
   mount_uploader :photo, PhotoUploader
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
 end

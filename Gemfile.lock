@@ -56,11 +56,16 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
+    city-state (0.0.13)
+      rubyzip (~> 1.1)
     cloudinary (1.9.1)
       aws_cf_signer
       rest-client
     coderay (1.1.2)
     concurrent-ruby (1.1.4)
+    country_state_select (3.0.3)
+      city-state
+      rails
     crass (1.0.4)
     devise (4.5.0)
       bcrypt (~> 3.0)
@@ -79,6 +84,7 @@ GEM
     ffi (1.9.25)
     font-awesome-sass (5.5.0.1)
       sassc (>= 1.11)
+    geocoder (1.5.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     http-cookie (1.0.3)
@@ -164,6 +170,7 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
+    rubyzip (1.2.2)
     sassc (2.0.0)
       ffi (~> 1.9.6)
       rake
@@ -221,9 +228,11 @@ DEPENDENCIES
   bootsnap
   carrierwave (~> 1.2)
   cloudinary (~> 1.9.1)
+  country_state_select (~> 3.0, >= 3.0.3)
   devise
   dotenv-rails
   font-awesome-sass (~> 5.5.0)
+  geocoder (~> 1.5)
   jbuilder (~> 2.0)
   listen (~> 3.0.5)
   pg (~> 0.21)
@@ -244,4 +253,4 @@ RUBY VERSION
    ruby 2.4.4p296
 
 BUNDLED WITH
-   1.17.2
+   2.0.1

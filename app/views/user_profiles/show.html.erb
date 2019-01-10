@@ -8,12 +8,15 @@
 <% end %>
 <p><strong>First Name:</strong> <%= @profile.name %></p>
 <p><strong>Last Name:</strong> <%= @profile.last_name %></p>
+<p><strong>Sex:</strong> <%= @profile.sex %></p>
 <p><strong>Birthdate:</strong> <%= @profile.birth_date.strftime("%F") %></p>
 <p><strong>Age:</strong> <%= @age %></p>
-<p><strong>Sex:</strong> <%= @profile.sex %></p>
+<p><strong>Country of Origin:</strong> <%= @origin_country %></p>
+<p><strong>Residency Status:</strong> <%= @profile.residency_status %></p>
 <p><strong>E-mail:</strong> <%= @user.email %></p>
 <p><strong>Phone:</strong> <%= @profile.phone %></p>
-<p><strong>Residency Status:</strong> <%= @profile.residency_status %></p>
+<p><strong>Country of Residence:</strong> <%= @residence_country %></p>
+<p><strong>Address:</strong> <%= @profile.address %></p>
 
 <hr>
 
