@@ -1,5 +1,6 @@
 <%= simple_form_for @study do |f| %>
-  <%= f.association :study, label: "Title" %>
+  <%= f.association :study, input_html: {class: 'js-example-basic-single'},
+  label: "Title" %>
   <%= f.input :study_type, collection: ["Year 9", "Year 10", "Year 11",
                                         "Year 12", "Certificate I",
                                         "Certificate II", "Certificate III",
