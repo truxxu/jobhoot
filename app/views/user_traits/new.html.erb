@@ -1,6 +1,6 @@
 <h2>Add a Personality Trait to your Profile</h2>
 
 <%= simple_form_for @trait do |f| %>
-  <%= f.association :trait %>
+  <%= f.association :trait, input_html: {class: 'select2-list'} %>
   <%= f.button :submit, class: "btn btn-primary" %>
 <% end %>

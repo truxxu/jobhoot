@@ -8,6 +8,6 @@
   <%= f.input :start_date, as: :string, input_html: { class: 'datepicker start_date' } %>
   <%= f.input :end_date, as: :string, input_html: { class: 'datepicker end_date' } %>
   <%= f.input :description, as: :text %>
-  <%= f.association :skill %>
+  <%= f.association :skill, input_html: {class: 'select2-list'} %>
   <%= f.button :submit, class: "btn btn-primary" %>
 <% end %>
