@@ -57,8 +57,8 @@ puts 'Position created'
 url = "https://res.cloudinary.com/dsvpxb12b/image/upload/v1546510089/adult-beard-boy-220453.jpg"
 user_profile = UserProfile.new(user_id: user.id, name: "Daniel", last_name:
     "Trujillo", birth_date: "1987-12-30", sex: "Male", phone: 123456,
-    residency_status: "Australian Resident", origin_country: "Colombia",
-    residence_country: "Germany", address: "16 Villa Gaudelet, Paris")
+    residency_status: "Australian Resident", origin_country: "CO",
+    residence_country: "BR", address: "16 Villa Gaudelet, Paris")
 user_profile.remote_photo_url = url
 user_profile.save
 puts 'UserProfile created'

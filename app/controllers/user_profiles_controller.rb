@@ -31,6 +31,23 @@ class UserProfilesController < ApplicationController
     end
   end
 
+  def edit
+    @profile = UserProfile.find(params[:id])
+  end
+
+  def update
+    @profile = UserProfile.find(params[:id])
+    @profile.update(profile_params)
+    if @profile.save
+      redirect_to user_profile_path(:user_profile_id)
+      flash[:notice] = "Profile Updated"
+    else
+      flash[:alert] = "Please verify the following information:"
+      render new_user_profile_path
+      puts @profile.errors.full_messages
+    end
+  end
+
   private
 
   def profile_params
