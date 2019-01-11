@@ -39,12 +39,6 @@ ActiveRecord::Schema.define(version: 2019_01_09_190958) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "positions", force: :cascade do |t|
-    t.string "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "skills", force: :cascade do |t|
     t.string "name"
     t.string "logo"
@@ -67,7 +61,7 @@ ActiveRecord::Schema.define(version: 2019_01_09_190958) do
 
   create_table "user_experiences", force: :cascade do |t|
     t.bigint "user_profile_id"
-    t.bigint "position_id"
+    t.bigint "study_id"
     t.bigint "skill_id"
     t.string "company_name"
     t.string "status"
@@ -77,8 +71,8 @@ ActiveRecord::Schema.define(version: 2019_01_09_190958) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["position_id"], name: "index_user_experiences_on_position_id"
     t.index ["skill_id"], name: "index_user_experiences_on_skill_id"
+    t.index ["study_id"], name: "index_user_experiences_on_study_id"
     t.index ["user_profile_id"], name: "index_user_experiences_on_user_profile_id"
   end
 
@@ -177,17 +171,17 @@ ActiveRecord::Schema.define(version: 2019_01_09_190958) do
 
   create_table "work_preferences", force: :cascade do |t|
     t.bigint "user_profile_id"
-    t.bigint "position_id"
+    t.bigint "study_id"
     t.text "objectives"
     t.string "contract_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["position_id"], name: "index_work_preferences_on_position_id"
+    t.index ["study_id"], name: "index_work_preferences_on_study_id"
     t.index ["user_profile_id"], name: "index_work_preferences_on_user_profile_id"
   end
 
-  add_foreign_key "user_experiences", "positions"
   add_foreign_key "user_experiences", "skills"
+  add_foreign_key "user_experiences", "studies"
   add_foreign_key "user_experiences", "user_profiles"
   add_foreign_key "user_hobbies", "user_profiles"
   add_foreign_key "user_languages", "languages"
@@ -201,6 +195,6 @@ ActiveRecord::Schema.define(version: 2019_01_09_190958) do
   add_foreign_key "user_studies", "user_profiles"
   add_foreign_key "user_traits", "traits"
   add_foreign_key "user_traits", "user_profiles"
-  add_foreign_key "work_preferences", "positions"
+  add_foreign_key "work_preferences", "studies"
   add_foreign_key "work_preferences", "user_profiles"
 end

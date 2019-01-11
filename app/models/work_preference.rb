@@ -1,6 +1,6 @@
 class WorkPreference < ApplicationRecord
   belongs_to :user_profile
-  belongs_to :position
+  belongs_to :study
 
   CONTRACT = ["Casual", "Contractor", "Full Time", "Internship", "Part Time",
               "Volunteer", "Work Experience"]

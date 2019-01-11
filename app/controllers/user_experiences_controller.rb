@@ -43,7 +43,7 @@ class UserExperiencesController < ApplicationController
   private
 
   def experience_params
-    params.require(:user_experience).permit(:user_profile_id, :position_id,
+    params.require(:user_experience).permit(:user_profile_id, :study_id,
                                             :status, :company_name,
                                             :contract_type, :description,
                                             :skill_id, :start_date, :end_date)
