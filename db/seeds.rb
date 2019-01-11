@@ -4,7 +4,6 @@ Study.destroy_all
 OtherStudy.destroy_all
 Language.destroy_all
 Skill.destroy_all
-Position.destroy_all
 Trait.destroy_all
 UserStudy.destroy_all
 UserOtherStudy.destroy_all
@@ -48,12 +47,6 @@ puts 'traits created'
 user = User.create(email: "df@gmail.com", password: "123456")
 puts 'User created'
 
-positiona = Position.create(title: "Manager")
-positionb = Position.create(title: "Cleaner")
-positionc = Position.create(title: "Mailman")
-puts 'Position created'
-
-
 url = "https://res.cloudinary.com/dsvpxb12b/image/upload/v1546510089/adult-beard-boy-220453.jpg"
 user_profile = UserProfile.new(user_id: user.id, name: "Daniel", last_name:
     "Trujillo", birth_date: "1987-12-30", sex: "Male", phone: 123456,
@@ -84,7 +77,7 @@ UserLanguage.create(user_profile_id: user_profile.id, language_id: 11,
   proficiency: 50)
 puts 'UserLanguage created'
 
-WorkPreference.create(user_profile_id: user_profile.id, position_id: positiona.id,
+WorkPreference.create(user_profile_id: user_profile.id, study_id: 20,
   objectives: "Something", contract_type: "Casual")
 puts 'WorkPreference created'
 
@@ -93,15 +86,15 @@ UserSkill.create(user_profile_id: user_profile.id, skill_id: 42)
 UserSkill.create(user_profile_id: user_profile.id, skill_id: 50)
 puts 'UserSkill created'
 
-UserExperience.create(user_profile_id: user_profile.id, position_id: positiona.id,
+UserExperience.create(user_profile_id: user_profile.id, study_id: 10,
   skill_id: 10, status: "Finished", company_name: "Continental", contract_type:
   "Full Time", description: "something", start_date: "2005-01-15", end_date:
   "2010-12-15")
-UserExperience.create(user_profile_id: user_profile.id, position_id: positionb.id,
+UserExperience.create(user_profile_id: user_profile.id, study_id: 11,
   skill_id: 20, status: "Finished", company_name: "WG", contract_type:
   "Full Time", description: "something", start_date: "2005-01-15", end_date:
   "2010-12-15")
-UserExperience.create(user_profile_id: user_profile.id, position_id: positionc.id,
+UserExperience.create(user_profile_id: user_profile.id, study_id: 12,
   skill_id: 30, status: "Finished", company_name: "HorMinka", contract_type:
   "Full Time", description: "something", start_date: "2005-01-15", end_date:
   "2010-12-15")

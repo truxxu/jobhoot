@@ -1,7 +1,7 @@
 class UserExperience < ApplicationRecord
   belongs_to :user_profile
   belongs_to :skill
-  belongs_to :position
+  belongs_to :study
 
   EXP_STATUS = ["Currently Working", "Finished"]
   CONTRACT =   ["Casual", "Contractor", "Full Time", "Internship", "Part Time",

@@ -1,5 +1,6 @@
 <%= simple_form_for(@preference) do |f| %>
-  <%= f.association :position %>
+  <%= f.association :study, input_html: {class: 'select2-list'},
+  label: "Position" %>
   <%= f.input :contract_type, collection: ["Casual", "Contractor", "Full Time",
                                            "Internship", "Part Time",
                                            "Volunteer", "Work Experience"] %>

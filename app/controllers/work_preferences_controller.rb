@@ -43,7 +43,7 @@ class WorkPreferencesController < ApplicationController
   private
 
   def preference_params
-    params.require(:work_preference).permit(:user_profile_id, :position_id,
+    params.require(:work_preference).permit(:user_profile_id, :study_id,
                                             :objectives, :contract_type)
   end
 end

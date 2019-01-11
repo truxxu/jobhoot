@@ -10,7 +10,7 @@ class UserProfile < ApplicationRecord
   has_many :user_skills, dependent: :destroy
   has_many :skills, through: :user_skills
   has_many :user_experiences, dependent: :destroy
-  has_many :positions, through: :user_experiences
+  # has_many :positions, through: :user_experiences
   has_many :user_traits, dependent: :destroy
   has_many :traits, through: :user_traits
   has_many :user_hobbies
