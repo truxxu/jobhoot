@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
   root to: 'pages#home'
+  get 'pages/applicant_welcome', as: 'applicant_welcome'
   resources :user_profiles, only: [:show, :new, :create, :edit, :update]
   resources :user_studies, only: [:new, :create, :destroy, :edit, :update]
   resources :user_other_studies, only: [:new, :create, :destroy, :edit, :update]
