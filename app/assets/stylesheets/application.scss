@@ -12,3 +12,15 @@
 @import "layouts/index";
 @import "components/index";
 @import "pages/index";
+
+html, body {
+  height: 100%
+}
+
+.gradient {
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to bottom, #00c9ff, #92fe9d);
+  height: calc(100% - 70px)
+}
+
+
