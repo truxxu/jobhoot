@@ -1,6 +1,15 @@
-<h2>Edit Study</h2>
+<div class="container-fluid gradient">
+  <div class="row">
+    <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+      <div class="form-login">
 
-<%= render 'form' %>
+        <h2 class="text-center">Edit Study</h2>
 
-<%= link_to "Go Back", user_profile_path(current_user.user_profile.id) %>
+        <%= render 'form' %>
+        <%= link_to "⬅ Go Back", user_profile_path(current_user.user_profile.id),
+        class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+</div>
 
