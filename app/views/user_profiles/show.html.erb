@@ -1,197 +1,206 @@
-<h2 class="text-center">Welcome, <%= @profile.name %></h2>
-<h3>About Me</h3>
-<% if @profile.photo? %>
-  <%= cl_image_tag(@profile.photo, width: 150, height: 150, crop: :thumb,
-                   gravity: :face) %>
-<% else %>
-  <p>*Add a profile photo*</p>
-<% end %>
-<p><strong>First Name:</strong> <%= @profile.name %></p>
-<p><strong>Last Name:</strong> <%= @profile.last_name %></p>
-<p><strong>Sex:</strong> <%= @profile.sex %></p>
-<p><strong>Birthdate:</strong> <%= @profile.birth_date.strftime("%F") %></p>
-<p><strong>Age:</strong> <%= @age %></p>
-<p><strong>Country of Origin:</strong> <%= @origin_country %></p>
-<p><strong>Residency Status:</strong> <%= @profile.residency_status %></p>
-<p><strong>E-mail:</strong> <%= @user.email %></p>
-<p><strong>Phone:</strong> <%= @profile.phone %></p>
-<p><strong>Country of Residence:</strong> <%= @residence_country %></p>
-<p><strong>Address:</strong> <%= @profile.address %></p>
-<%= link_to "Edit", edit_user_profile_path(@profile.id)%>
+<div class="container-fluid gradient">
+  <div class="row">
+    <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+      <div class="form-login">
+
+        <h2 class="text-center">Welcome, <%= @profile.name %></h2>
+        <h3 class="text-center">About Me</h3>
+        <% if @profile.photo? %>
+          <%= cl_image_tag(@profile.photo, width: 150, height: 150, crop: :thumb,
+                           gravity: :face) %>
+        <% else %>
+          <p>*Add a profile photo*</p>
+        <% end %>
+        <p><strong>First Name:</strong> <%= @profile.name %></p>
+        <p><strong>Last Name:</strong> <%= @profile.last_name %></p>
+        <p><strong>Sex:</strong> <%= @profile.sex %></p>
+        <p><strong>Birthdate:</strong> <%= @profile.birth_date.strftime("%F") %></p>
+        <p><strong>Age:</strong> <%= @age %></p>
+        <p><strong>Country of Origin:</strong> <%= @origin_country %></p>
+        <p><strong>Residency Status:</strong> <%= @profile.residency_status %></p>
+        <p><strong>E-mail:</strong> <%= @user.email %></p>
+        <p><strong>Phone:</strong> <%= @profile.phone %></p>
+        <p><strong>Country of Residence:</strong> <%= @residence_country %></p>
+        <p><strong>Address:</strong> <%= @profile.address %></p>
+        <%= link_to "Edit", edit_user_profile_path(@profile.id)%>
 
 
-<hr>
+        <hr>
 
-<h3>Studies</h3>
-<%= link_to "Add", new_user_study_path, class: "btn btn-primary" %>
-<% @user_studies.each do |s| %>
-  <p>
-    <strong>Title:</strong>
-    <%= s.study.title %>
-  </p>
-  <p>
-    <strong>Degree:</strong>
-    <%= s.study_type %>
-  </p>
-  <p>
-    <strong>Status:</strong>
-    <%= s.status %>
-  </p>
-  <p>
-    <strong>Started at:</strong>
-    <%= s.start_date.strftime("%F") %>
-  </p>
-  <p><strong>Finished at:</strong>
-    <%= s.end_date.strftime("%F") %>
-  </p>
-  <%= link_to "Edit", edit_user_study_path(s.id)%>
-  <%= link_to "Remove", user_study_path(s.id), method: :delete %>
-<% end %>
+        <h3>Studies</h3>
+        <%= link_to "Add", new_user_study_path, class: "btn btn-primary" %>
+        <% @user_studies.each do |s| %>
+          <p>
+            <strong>Title:</strong>
+            <%= s.study.title %>
+          </p>
+          <p>
+            <strong>Degree:</strong>
+            <%= s.study_type %>
+          </p>
+          <p>
+            <strong>Status:</strong>
+            <%= s.status %>
+          </p>
+          <p>
+            <strong>Started at:</strong>
+            <%= s.start_date.strftime("%F") %>
+          </p>
+          <p><strong>Finished at:</strong>
+            <%= s.end_date.strftime("%F") %>
+          </p>
+          <%= link_to "Edit", edit_user_study_path(s.id)%>
+          <%= link_to "Remove", user_study_path(s.id), method: :delete %>
+        <% end %>
 
-<hr>
+        <hr>
 
-<h3>Other Studies</h3>
-<%= link_to "Add", new_user_other_study_path, class: "btn btn-primary" %>
-<% @user_other_studies.each do |s| %>
-  <p>
-    <strong>Title:</strong>
-    <%= s.other_study.title %>
-  </p>
-  <p>
-    <strong>Type:</strong>
-    <%= s.study_type %>
-  </p>
-  <p>
-    <strong>Started at:</strong>
-    <%= s.start_date.strftime("%F") %>
-  </p>
-  <p><strong>Finished at:</strong>
-    <%= s.end_date.strftime("%F") %>
-  </p>
-  <%= link_to "Edit", edit_user_other_study_path(s.id)%>
-  <%= link_to "Remove", user_other_study_path(s.id), method: :delete %>
-<% end %>
+        <h3>Other Studies</h3>
+        <%= link_to "Add", new_user_other_study_path, class: "btn btn-primary" %>
+        <% @user_other_studies.each do |s| %>
+          <p>
+            <strong>Title:</strong>
+            <%= s.other_study.title %>
+          </p>
+          <p>
+            <strong>Type:</strong>
+            <%= s.study_type %>
+          </p>
+          <p>
+            <strong>Started at:</strong>
+            <%= s.start_date.strftime("%F") %>
+          </p>
+          <p><strong>Finished at:</strong>
+            <%= s.end_date.strftime("%F") %>
+          </p>
+          <%= link_to "Edit", edit_user_other_study_path(s.id)%>
+          <%= link_to "Remove", user_other_study_path(s.id), method: :delete %>
+        <% end %>
 
-<hr>
+        <hr>
 
-<h3>Languages</h3>
-<%= link_to "Add", new_user_language_path, class: "btn btn-primary" %>
-<% @user_languages.each do |s| %>
-  <p>
-    <strong>Name:</strong>
-    <%=  s.language.name%>
-  </p>
-  <p>
-    <strong>Proficiency:</strong>
-    <%= s.proficiency %>
-  </p>
-  <%= link_to "Edit", edit_user_language_path(s.id)%>
-  <%= link_to "Remove", user_language_path(s.id), method: :delete %>
-<% end %>
+        <h3>Languages</h3>
+        <%= link_to "Add", new_user_language_path, class: "btn btn-primary" %>
+        <% @user_languages.each do |s| %>
+          <p>
+            <strong>Name:</strong>
+            <%=  s.language.name%>
+          </p>
+          <p>
+            <strong>Proficiency:</strong>
+            <%= s.proficiency %>
+          </p>
+          <%= link_to "Edit", edit_user_language_path(s.id)%>
+          <%= link_to "Remove", user_language_path(s.id), method: :delete %>
+        <% end %>
 
-<hr>
+        <hr>
 
-<h3>Work Preferences</h3>
-<%= link_to "Add", new_work_preference_path, class: "btn btn-primary" %>
-<% @preferences.each do |s| %>
-  <p>
-    <strong>Position:</strong>
-    <%= s.study.title %>
-  </p>
-  <p>
-    <strong>Contract Type:</strong>
-    <%= s.contract_type %>
-  </p>
-  <p>
-    <strong>Objectives:</strong>
-    <%= s.objectives %>
-  </p>
-  <%= link_to "Edit", edit_work_preference_path(s.id)%>
-  <%= link_to "Remove", work_preference_path(s.id), method: :delete %>
-<% end %>
+        <h3>Work Preferences</h3>
+        <%= link_to "Add", new_work_preference_path, class: "btn btn-primary" %>
+        <% @preferences.each do |s| %>
+          <p>
+            <strong>Position:</strong>
+            <%= s.study.title %>
+          </p>
+          <p>
+            <strong>Contract Type:</strong>
+            <%= s.contract_type %>
+          </p>
+          <p>
+            <strong>Objectives:</strong>
+            <%= s.objectives %>
+          </p>
+          <%= link_to "Edit", edit_work_preference_path(s.id)%>
+          <%= link_to "Remove", work_preference_path(s.id), method: :delete %>
+        <% end %>
 
-<hr>
+        <hr>
 
-<h3>Skills</h3>
-<%= link_to "Add", new_user_skill_path, class: "btn btn-primary" %>
-<% @skills.each do |t| %>
-  <p>
-    <%= t.skill.name %>
-  </p>
-  <%= link_to "Remove", user_skill_path(t.id), method: :delete %>
-<% end %>
+        <h3>Skills</h3>
+        <%= link_to "Add", new_user_skill_path, class: "btn btn-primary" %>
+        <% @skills.each do |t| %>
+          <p>
+            <%= t.skill.name %>
+          </p>
+          <%= link_to "Remove", user_skill_path(t.id), method: :delete %>
+        <% end %>
 
-<hr>
+        <hr>
 
-<h3>Working Experience</h3>
-<%= link_to "Add", new_user_experience_path, class: "btn btn-primary" %>
-<% @experiences.each do |s| %>
-  <p>
-    <strong>Company:</strong>
-    <%= s.company_name %>
-  </p>
-  <p>
-    <strong>Position:</strong>
-    <%= s.study.title %>
-  </p>
-  <p>
-    <strong>Contract Type:</strong>
-    <%= s.contract_type %>
-  </p>
-  <p>
-    <strong>Description:</strong>
-    <%= s.description %>
-  </p>
-  <p>
-    <strong>Skills:</strong>
-    <%= s.skill.name %>
-  </p>
-  <p>
-    <strong>Status:</strong>
-    <%= s.status %>
-  </p>
-  <p>
-    <strong>Started at:</strong>
-    <%= s.start_date.strftime("%F") %>
-  </p>
-  <p>
-    <strong>Finished at:</strong>
-    <%= s.end_date.strftime("%F") %>
-  </p>
-  <%= link_to "Edit", edit_user_experience_path(s.id)%>
-  <%= link_to "Remove", user_experience_path(s.id), method: :delete %>
-<% end %>
+        <h3>Working Experience</h3>
+        <%= link_to "Add", new_user_experience_path, class: "btn btn-primary" %>
+        <% @experiences.each do |s| %>
+          <p>
+            <strong>Company:</strong>
+            <%= s.company_name %>
+          </p>
+          <p>
+            <strong>Position:</strong>
+            <%= s.study.title %>
+          </p>
+          <p>
+            <strong>Contract Type:</strong>
+            <%= s.contract_type %>
+          </p>
+          <p>
+            <strong>Description:</strong>
+            <%= s.description %>
+          </p>
+          <p>
+            <strong>Skills:</strong>
+            <%= s.skill.name %>
+          </p>
+          <p>
+            <strong>Status:</strong>
+            <%= s.status %>
+          </p>
+          <p>
+            <strong>Started at:</strong>
+            <%= s.start_date.strftime("%F") %>
+          </p>
+          <p>
+            <strong>Finished at:</strong>
+            <%= s.end_date.strftime("%F") %>
+          </p>
+          <%= link_to "Edit", edit_user_experience_path(s.id)%>
+          <%= link_to "Remove", user_experience_path(s.id), method: :delete %>
+        <% end %>
 
-<hr>
+        <hr>
 
-<h3>Personality Traits</h3>
-<%= link_to "Add", new_user_trait_path, class: "btn btn-primary" %>
-<% @traits.each do |t| %>
-  <p>
-    <strong>Name:</strong>
-    <%= t.trait.name %>
-  </p>
-  <p>
-    <strong>Description:</strong>
-    <%= t.trait.description %>
-  </p>
-  <%= link_to "Remove", user_trait_path(t.id), method: :delete %>
-<% end %>
+        <h3>Personality Traits</h3>
+        <%= link_to "Add", new_user_trait_path, class: "btn btn-primary" %>
+        <% @traits.each do |t| %>
+          <p>
+            <strong>Name:</strong>
+            <%= t.trait.name %>
+          </p>
+          <p>
+            <strong>Description:</strong>
+            <%= t.trait.description %>
+          </p>
+          <%= link_to "Remove", user_trait_path(t.id), method: :delete %>
+        <% end %>
 
-<hr>
+        <hr>
 
-<h3>Hobbies</h3>
-<%= link_to "Add", new_user_hobby_path, class: "btn btn-primary" %>
-<% @hobbies.each do |t| %>
-  <p>
-    <strong>Name:</strong>
-    <%= t.name %>
-  </p>
-  <p>
-    <strong>Category:</strong>
-    <%= t.category %>
-  </p>
-  <%= link_to "Edit", edit_user_hobby_path(t.id)%>
-  <%= link_to "Remove", user_hobby_path(t.id), method: :delete %>
-<% end %>
+        <h3>Hobbies</h3>
+        <%= link_to "Add", new_user_hobby_path, class: "btn btn-primary" %>
+        <% @hobbies.each do |t| %>
+          <p>
+            <strong>Name:</strong>
+            <%= t.name %>
+          </p>
+          <p>
+            <strong>Category:</strong>
+            <%= t.category %>
+          </p>
+          <%= link_to "Edit", edit_user_hobby_path(t.id)%>
+          <%= link_to "Remove", user_hobby_path(t.id), method: :delete %>
+        <% end %>
 
+      </div>
+    </div>
+  </div>
+</div>

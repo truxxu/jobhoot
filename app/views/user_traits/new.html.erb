@@ -1,8 +1,17 @@
-<h2>Add a Personality Trait to your Profile</h2>
+<div class="container-fluid gradient">
+  <div class="row">
+    <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+      <div class="form-login">
 
-<%= simple_form_for @trait do |f| %>
-  <%= f.association :trait, input_html: {class: 'select2-list'} %>
-  <%= f.button :submit, class: "btn btn-primary" %>
-<% end %>
+        <h2 class="text-center">Add a Personality Trait to your Profile</h2>
+        <%= simple_form_for @trait do |f| %>
+          <%= f.association :trait, input_html: {class: 'select2-list'} %>
+          <%= f.button :submit, class: "btn btn-primary" %>
+          <% end %>
+        <%= link_to "⬅ Go Back", user_profile_path(current_user.user_profile.id),
+        class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+</div>
 
-<%= link_to "Go Back", user_profile_path(current_user.user_profile.id) %>
