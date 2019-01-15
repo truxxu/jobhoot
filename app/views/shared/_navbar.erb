@@ -1,51 +1,67 @@
-<div class="navbar-wagon">
-  <!-- Logo -->
+<div class="navbar navbar-wagon">
   <a href="/" class="navbar-wagon-brand">
     <%= image_tag "logo.png", alt: "Jobhoot logo" %>
   </a>
-
-  <!-- Right Navigation -->
-  <div class="navbar-wagon-right hidden-xs hidden-sm">
-    <!-- Profile picture with dropdown list -->
+  <div class="nav-bar-right d-flex align-items-center">
     <% if user_signed_in? %>
-      <div class="navbar-wagon-item">
-        <div class="dropdown">
-          <%= image_tag "profile.png", alt: "profile picture", height: "32px",
-          class: "dropdown-toggle", "data-toggle" => "dropdown"; %>
-          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-            <li>
-              <% if !current_user.user_profile.nil? %>
-                <%= link_to user_profile_path(current_user.user_profile.id) do %>
-                  <i class="fas fa-user"></i>  <%= t(".user_profiles", default: "Profile") %>
-                <% end %>
-              <% else %>
-                <%= link_to new_user_profile_path do %>
-                  <i class="fas fa-user"></i>  <%= t(".user_profiles", default: "Profile") %>
-                <% end %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to destroy_user_session_path, method: :delete do %>
-               <i class="fas fa-sign-out-alt"></i>  <%= t(".sign_out", default: "Log out") %>
-              <% end %>
-            </li>
-          </ul>
+      <% if !current_user.user_profile.nil? %>
+        <%= link_to "Profile", user_profile_path(current_user.user_profile.id),
+        class: "px-3 d-none d-sm-block navbar-wagon-item navbar-wagon-link" %>
+        <div class="dropdown  d-none d-sm-block">
+          <% if current_user.user_profile.photo? %>
+            <%= cl_image_tag(current_user.user_profile.photo, width: 50,
+              height: 50, crop: :thumb, gravity: :face, radius: 25,
+              data: { toggle:"dropdown" }, aria: { haspopup:"true", expanded:
+                "false" }) %>
+          <% else %>
+            <%= image_tag "profile.png", class: "px-3", height: "50px", alt:"avatar",
+            type: "image", id: "dropdownMenuButton", data: { toggle:"dropdown" },
+            aria: { haspopup:"true", expanded: "false" } %>
+          <% end %>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby=
+          "dropdownMenuButton">
+            <%= link_to "Settings", "#", class: "dropdown-item" %>
+            <%= link_to "Log Out", destroy_user_session_path, method: :delete,
+            class: "dropdown-item" %>
+          </div>
         </div>
-      </div>
-      <!-- Dropdown appearing on mobile only -->
-<!--       <div class="navbar-wagon-item hidden-md hidden-lg">
-        <div class="dropdown">
-          <i class="fas fa-bars dropdown-toggle" data-toggle="dropdown" role="button"></i>
-          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-            <li><a href="#">Element A</a></li>
-            <li><a href="#">Element B</a></li>
-            <li><a href="#">Messagese</a></li>
-          </ul>
-        </div> -->
-      </div>
       <% else %>
-        <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
-        <%= link_to t(".sign_up", default: "Register"), new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link" %>
+        <%= link_to "Profile", new_user_profile_path,
+        class: "px-3 d-none d-sm-block navbar-wagon-item navbar-wagon-link" %>
+        <div class="dropdown  d-none d-sm-block">
+          <%= image_tag "profile.png", class: "px-3", alt:"avatar",
+          type: "image", id: "dropdownMenuButton", data: { toggle:"dropdown" },
+          aria: { haspopup:"true", expanded: "false" } %>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+            <%= link_to "Settings", "#", class: "dropdown-item" %>
+            <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <%= link_to "Login", new_user_session_path, class: "px-3 d-none d-sm-block navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Register", new_user_registration_path, class: "px-3 d-none d-sm-block navbar-wagon-item navbar-wagon-link" %>
     <% end %>
   </div>
+  <div class="dropdown burger d-block d-sm-none">
+    <i class="fas fa-bars" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+      <% if user_signed_in? %>
+        <% if !current_user.user_profile.nil? %>
+          <%= link_to "Profile", user_profile_path(current_user.user_profile.id),
+          class: "dropdown-item" %>
+        <% else %>
+          <%= link_to "Profile", new_user_profile_path,
+          class: "dropdown-item" %>
+        <% end %>
+        <%= link_to "Settings", "#", class: "dropdown-item" %>
+        <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+      <% else %>
+      <%= link_to t(".sign_in", default: "Login"), new_user_session_path,
+      class: "dropdown-item" %>
+      <%= link_to t(".sign_up", default: "Register"), new_user_registration_path,
+      class: "dropdown-item" %>
+      <% end %>
+   </div>
+ </div>
 </div>

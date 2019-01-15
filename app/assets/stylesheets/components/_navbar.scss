@@ -41,7 +41,7 @@
   font-size: 14px;
 }
 .navbar-wagon-link:hover {
-  color: #da552f;
+  color: $hblue;
   text-decoration: none;
 }
 
@@ -74,4 +74,9 @@
   transform: rotate(45deg);
   border-left: 1px solid #E6E6E6;
   border-top: 1px solid #E6E6E6;
+}
+
+.avatar-large {
+  width: 50px;
+  border-radius: 50%;
 }
