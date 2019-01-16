@@ -153,27 +153,39 @@
         </div>
 
         <div class="form-login">
-          <h3>Skills</h3>
-          <%= link_to "Add", new_user_skill_path, class: "btn btn-primary" %>
-          <% @skills.each do |t| %>
-            <p>
+          <h3>
+            Skills
+            <%= link_to new_user_skill_path, class: "btn-add" do %>
+              <i class="fas fa-plus"></i>
+            <% end %>
+          </h3>
+          <% @skills.each_with_index do |t, i| %>
+            <h4>
               <%= t.skill.name %>
-            </p>
-            <%= link_to "Remove", user_skill_path(t.id), method: :delete %>
+              <%= link_to user_skill_path(t.id), method: :delete,
+              class: "btn-add" do %>
+                <i class="far fa-trash-alt"></i>
+              <% end %>
+            </h4>
           <% end %>
         </div>
 
         <div class="form-login">
-          <h3>Working Experience</h3>
-          <%= link_to "Add", new_user_experience_path, class: "btn btn-primary" %>
+          <h3>
+            Working Experience
+            <%= link_to new_user_experience_path, class: "btn-add" do %>
+              <i class="fas fa-plus"></i>
+            <% end %>
+          </h3>
           <% @experiences.each_with_index do |s, i| %>
-            <p>
-              <strong>Company:</strong>
-              <%= s.company_name %>
-            </p>
-            <p>
-              <strong>Position:</strong>
+            <h4>
               <%= s.study.title %>
+              <%= link_to edit_user_experience_path(s.id), class: "btn-add" do %>
+                <i class="far fa-edit"></i>
+              <% end %>
+            </h4>
+            <p>
+              <%= s.company_name %>
             </p>
             <p>
               <strong>Contract Type:</strong>
@@ -199,8 +211,6 @@
               <strong>Finished at:</strong>
               <%= s.end_date.strftime("%F") %>
             </p>
-            <%= link_to "Edit", edit_user_experience_path(s.id)%>
-            <%= link_to "Remove", user_experience_path(s.id), method: :delete %>
             <% if i < @experiences.size - 1 %>
               <hr>
             <% end %>
@@ -208,18 +218,24 @@
         </div>
 
         <div class="form-login">
-          <h3>Personality Traits</h3>
-          <%= link_to "Add", new_user_trait_path, class: "btn btn-primary" %>
-          <% @traits.each_with_index do |t, i| %>
-            <p>
-              <strong>Name:</strong>
-              <%= t.trait.name %>
-            </p>
+          <h3>
+            Personality Traits
+            <%= link_to new_user_trait_path, class: "btn-add" do %>
+              <i class="fas fa-plus"></i>
+            <% end %>
+          </h3>
+          <% @traits.each_with_index do |s, i| %>
+            <h4>
+              <%= s.trait.name %>
+              <%= link_to user_trait_path(s.id), method: :delete,
+              class: "btn-add" do %>
+                <i class="far fa-trash-alt"></i>
+              <% end %>
+            </h4>
             <p>
               <strong>Description:</strong>
-              <%= t.trait.description %>
+              <%= s.trait.description %>
             </p>
-            <%= link_to "Remove", user_trait_path(t.id), method: :delete %>
             <% if i < @traits.size - 1 %>
               <hr>
             <% end %>
@@ -227,19 +243,23 @@
         </div>
 
         <div class="form-login">
-          <h3>Hobbies</h3>
-          <%= link_to "Add", new_user_hobby_path, class: "btn btn-primary" %>
+          <h3>
+            Hobbies
+            <%= link_to new_user_hobby_path, class: "btn-add" do %>
+              <i class="fas fa-plus"></i>
+            <% end %>
+          </h3>
           <% @hobbies.each_with_index do |t, i| %>
-            <p>
-              <strong>Name:</strong>
+            <h4>
               <%= t.name %>
-            </p>
+              <%= link_to edit_user_hobby_path(t.id), class: "btn-add" do %>
+                <i class="far fa-edit"></i>
+              <% end %>
+            </h4>
             <p>
               <strong>Category:</strong>
               <%= t.category %>
             </p>
-            <%= link_to "Edit", edit_user_hobby_path(t.id)%>
-            <%= link_to "Remove", user_hobby_path(t.id), method: :delete %>
             <% if i < @hobbies.size - 1 %>
               <hr>
             <% end %>
