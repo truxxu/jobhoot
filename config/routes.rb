@@ -10,11 +10,11 @@ Rails.application.routes.draw do
   resources :user_profiles, only: [:show, :new, :create, :edit, :update]
   resources :user_studies, only: [:show, :new, :create, :destroy, :edit, :update]
   resources :user_other_studies, only: [:show, :new, :create, :destroy, :edit, :update]
-  resources :user_languages, only: [:new, :create, :destroy, :edit, :update]
-  resources :work_preferences, only: [:new, :create, :destroy, :edit, :update]
-  resources :user_skills, only: [:new, :create, :destroy]
-  resources :user_experiences, only: [:new, :create, :destroy, :edit, :update]
-  resources :user_traits, only: [:new, :create, :destroy]
-  resources :user_hobbies, only: [:new, :create, :destroy, :edit, :update]
+  resources :user_languages, only: [:show, :new, :create, :destroy, :edit, :update]
+  resources :work_preferences, only: [:show, :new, :create, :destroy, :edit, :update]
+  resources :user_skills, only: [:show, :new, :create, :destroy]
+  resources :user_experiences, only: [:show, :new, :create, :destroy, :edit, :update]
+  resources :user_traits, only: [:show, :new, :create, :destroy]
+  resources :user_hobbies, only: [:show, :new, :create, :destroy, :edit, :update]
 
 end

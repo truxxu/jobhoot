@@ -5,6 +5,13 @@
       <div class="form-profile">
         <h2 class="text-center">Welcome, <%= @profile.name %></h2>
         <%= link_to "Studies", user_study_path(current_user.user_profile.id)  %>
+        <%= link_to "Other Studies", user_other_study_path(current_user.user_profile.id) %>
+        <%= link_to "Languages", user_language_path(current_user.user_profile.id) %>
+        <%= link_to "Work Preferences", work_preference_path(current_user.user_profile.id) %>
+        <%= link_to "Skills", user_skill_path(current_user.user_profile.id) %>
+        <%= link_to "Working Experience", user_experience_path(current_user.user_profile.id) %>
+        <%= link_to "Personality Traits", user_trait_path(current_user.user_profile.id) %>
+        <%= link_to "Hobbies", user_hobby_path(current_user.user_profile.id) %>
         <h3>
           About Me
           <%= link_to edit_user_profile_path(@profile.id), class: "btn-add",
@@ -30,6 +37,7 @@
         <p><strong>Address:</strong> <%= @profile.address %></p>
       </div>
 
+      <!-- Studies -->
       <div class="form-profile">
         <h3>
           Studies
@@ -64,7 +72,7 @@
           <% end %>
         <% end %>
       </div>
-
+      <!-- Other Studies -->
       <div class="form-profile">
         <h3>
           Other Studies
@@ -99,7 +107,7 @@
           <% end %>
         <% end %>
       </div>
-
+      <!-- Languages -->
       <div class="form-profile">
         <h3>
           Languages
@@ -123,8 +131,8 @@
           <% end %>
         <% end %>
       </div>
-
-        <div class="form-profile">
+      <!-- Work Preferences -->
+      <div class="form-profile">
           <h3>
             Work Preferences
             <%= link_to new_work_preference_path, class: "btn-add" do %>
@@ -150,9 +158,9 @@
               <hr>
             <% end %>
           <% end %>
-        </div>
-
-        <div class="form-profile">
+      </div>
+      <!-- Skills -->
+      <div class="form-profile">
           <h3>
             Skills
             <%= link_to new_user_skill_path, class: "btn-add" do %>
@@ -168,9 +176,9 @@
               <% end %>
             </h4>
           <% end %>
-        </div>
-
-        <div class="form-profile">
+      </div>
+      <!-- Working Experience -->
+      <div class="form-profile">
           <h3>
             Working Experience
             <%= link_to new_user_experience_path, class: "btn-add" do %>
@@ -215,9 +223,9 @@
               <hr>
             <% end %>
           <% end %>
-        </div>
-
-        <div class="form-profile">
+      </div>
+      <!-- Traits -->
+      <div class="form-profile">
           <h3>
             Personality Traits
             <%= link_to new_user_trait_path, class: "btn-add" do %>
@@ -240,9 +248,9 @@
               <hr>
             <% end %>
           <% end %>
-        </div>
-
-        <div class="form-profile">
+      </div>
+      <!-- Hobby -->
+      <div class="form-profile">
           <h3>
             Hobbies
             <%= link_to new_user_hobby_path, class: "btn-add" do %>
@@ -264,8 +272,6 @@
               <hr>
             <% end %>
           <% end %>
-        </div>
-
       </div>
     </div>
   </div>
@@ -283,9 +289,9 @@
       </div>
       <div class="modal-body">
         <div class="container gradient">
-              <div class="form-login">
-                <%= render 'form' %>
-              </div>
+          <div class="form-login">
+            <%= render 'form' %>
+          </div>
         </div>
       </div>
     </div>

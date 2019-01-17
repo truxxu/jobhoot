@@ -3,6 +3,10 @@ class UserSkillsController < ApplicationController
     @skill = UserSkill.new
   end
 
+  def show
+    @skill = UserSkill.where(params[:user_profile_id])
+  end
+
   def create
     @skill = UserSkill.new(skill_params)
     @skill.user_profile = current_user.user_profile

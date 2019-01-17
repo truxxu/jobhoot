@@ -3,6 +3,10 @@ class UserExperiencesController < ApplicationController
     @experience = UserExperience.new
   end
 
+  def show
+    @experience = UserExperience.where(params[:user_profile_id])
+  end
+
   def create
     @experience = UserExperience.new(experience_params)
     @experience.user_profile = current_user.user_profile

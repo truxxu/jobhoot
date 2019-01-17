@@ -3,6 +3,10 @@ class UserOtherStudiesController < ApplicationController
     @study = UserOtherStudy.new
   end
 
+  def show
+    @study = UserOtherStudy.where(params[:user_profile_id])
+  end
+
   def create
     @study = UserOtherStudy.new(study_params)
     @study.user_profile = current_user.user_profile

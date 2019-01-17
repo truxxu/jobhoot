@@ -3,6 +3,10 @@ class UserLanguagesController < ApplicationController
     @language = UserLanguage.new
   end
 
+  def show
+    @language = UserLanguage.where(params[:user_profile_id])
+  end
+
   def create
     @language = UserLanguage.new(lang_params)
     @language.user_profile = current_user.user_profile
