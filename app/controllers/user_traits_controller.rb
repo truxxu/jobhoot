@@ -3,6 +3,10 @@ class UserTraitsController < ApplicationController
     @trait = UserTrait.new
   end
 
+  def show
+    @trait = UserTrait.where(params[:user_profile_id])
+  end
+
   def create
     @trait = UserTrait.new(trait_params)
     @trait.user_profile = current_user.user_profile

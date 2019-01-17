@@ -1,4 +1,4 @@
-<div class="container-fluid gradient">
+^<div class="container-fluid gradient">
   <div class="row">
     <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
       <div class="form-login">
@@ -6,8 +6,9 @@
         <h2 class="text-center">Edit your Working Experience</h2>
 
         <%= render 'form' %>
-        <%= link_to "⬅ Go Back", user_profile_path(current_user.user_profile.id),
+        <%= link_to "Cancel", user_profile_path(current_user.user_profile.id),
         class: "btn btn-primary" %>
+        <%= link_to "Remove", user_experience_path(params[:id]), method: :delete, class: "btn btn-primary" %>
       </div>
     </div>
   </div>

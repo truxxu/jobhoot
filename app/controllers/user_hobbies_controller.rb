@@ -3,6 +3,10 @@ class UserHobbiesController < ApplicationController
     @hobby = UserHobby.new
   end
 
+  def show
+    @hobby = UserHobby.where(params[:user_profile_id])
+  end
+
   def create
     @hobby = UserHobby.new(hobby_params)
     @hobby.user_profile = current_user.user_profile

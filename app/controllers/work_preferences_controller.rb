@@ -3,6 +3,10 @@ class WorkPreferencesController < ApplicationController
     @preference = WorkPreference.new
   end
 
+  def show
+    @preference = WorkPreference.where(params[:user_profile_id])
+  end
+
   def create
     @preference = WorkPreference.new(preference_params)
     @preference.user_profile = current_user.user_profile
