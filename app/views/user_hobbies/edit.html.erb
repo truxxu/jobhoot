@@ -6,7 +6,7 @@
         <h2 class="text-center">Edit Hobby</h2>
 
         <%= render 'form' %>
-        <%= link_to "⬅ Go Back", user_profile_path(current_user.user_profile.id),
+        <%= link_to "Cancel", user_profile_path(current_user.user_profile.id),
         class: "btn btn-primary" %>
         <%= link_to "Remove", user_hobby_path(params[:id]), method: :delete, class: "btn btn-primary" %>
       </div>

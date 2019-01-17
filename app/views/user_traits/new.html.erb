@@ -8,7 +8,7 @@
           <%= f.association :trait, input_html: {class: 'select2-list'} %>
           <%= f.button :submit, class: "btn btn-primary" %>
           <% end %>
-        <%= link_to "⬅ Go Back", user_profile_path(current_user.user_profile.id),
+        <%= link_to "Cancel", user_profile_path(current_user.user_profile.id),
         class: "btn btn-primary" %>
       </div>
     </div>
