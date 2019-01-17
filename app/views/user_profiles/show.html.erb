@@ -4,6 +4,7 @@
 
       <div class="form-profile">
         <h2 class="text-center">Welcome, <%= @profile.name %></h2>
+        <%= link_to "Studies", user_study_path(current_user.user_profile.id)  %>
         <h3>
           About Me
           <%= link_to edit_user_profile_path(@profile.id), class: "btn-add",

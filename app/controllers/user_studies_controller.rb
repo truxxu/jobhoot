@@ -1,4 +1,8 @@
 class UserStudiesController < ApplicationController
+  def show
+    @study = UserStudy.where(params[:user_profile_id])
+  end
+
   def new
     @study = UserStudy.new
   end
