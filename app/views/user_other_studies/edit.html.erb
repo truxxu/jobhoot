@@ -7,7 +7,7 @@
 
         <%= render 'form' %>
         <%= link_to "Cancel", user_profile_path(current_user.user_profile.id),
-        class: "btn btn-primary" %>
+        class: "btn btn-light" %>
         <%= link_to "Remove", user_other_study_path(params[:id]), method:
         :delete, class: "btn btn-danger" %>
       </div>

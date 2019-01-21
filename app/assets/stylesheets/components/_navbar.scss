@@ -37,8 +37,9 @@
 
 /* Navbar link */
 .navbar-wagon-link {
-  color: #616668;
-  font-size: 14px;
+  color: #212529;
+  font-size: 16px;
+  font-weight: bold;
 }
 .navbar-wagon-link:hover {
   color: $hblue;
@@ -79,4 +80,8 @@
 .avatar-large {
   width: 50px;
   border-radius: 50%;
+}
+
+.dropdown-item {
+  font-weight: bold;
 }

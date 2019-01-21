@@ -1,0 +1,16 @@
+.nav {
+  a {
+    color: #212529;
+    font-weight: bold;
+  }
+  .active {
+    background-color: $hblue !important;
+    color: #212529 !important;
+    border: 0.1em solid;
+    border-radius: 20px;
+  }
+  .nav-item:hover {
+    border: 0.1em solid;
+    border-radius: 20px;
+  }
+}
