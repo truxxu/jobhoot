@@ -14,6 +14,14 @@ class UserProfilesController < ApplicationController
     @age = time_delta / 31_557_600 # seconds in a year
     @origin_country = country_name(@profile.origin_country)
     @residence_country = country_name(@profile.residence_country)
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render  pdf: "Your_filename",
+                template: "user_profiles/show.html.erb",
+                layout: 'pdf.html'
+      end
+    end
   end
 
   def new

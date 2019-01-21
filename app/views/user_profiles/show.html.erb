@@ -4,6 +4,7 @@
 
       <div class="form-profile">
         <h2 class="text-center">Welcome, <%= @profile.name %></h2>
+        <%= link_to 'Create PDF document', user_profile_path(@profile, :format => :pdf) %>
         <nav class="nav nav-pills nav-fill">
           <%= link_to "About Me", user_profile_path(current_user.user_profile.id),
             class: "nav-item nav-link active" %>
