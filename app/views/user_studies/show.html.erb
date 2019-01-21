@@ -2,6 +2,22 @@
   <div class="row">
     <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
       <div class="form-profile">
+        <nav class="nav nav-pills nav-fill">
+          <%= link_to "About Me", user_profile_path(current_user.user_profile.id),
+            class: "nav-item nav-link" %>
+          <%= link_to "Studies", user_study_path(current_user.user_profile.id),
+            class: "nav-item nav-link active" %>
+          <%= link_to "Other Studies", user_other_study_path(current_user.user_profile.id), class: "nav-item nav-link" %>
+          <%= link_to "Languages", user_language_path(current_user.user_profile.id),
+            class: "nav-item nav-link" %>
+          <%= link_to "Work Preferences", work_preference_path(current_user.user_profile.id), class: "nav-item nav-link" %>
+          <%= link_to "Skills", user_skill_path(current_user.user_profile.id),
+            class: "nav-item nav-link" %>
+          <%= link_to "Working Experience", user_experience_path(current_user.user_profile.id), class: "nav-item nav-link" %>
+          <%= link_to "Personality Traits", user_trait_path(current_user.user_profile.id), class: "nav-item nav-link" %>
+          <%= link_to "Hobbies", user_hobby_path(current_user.user_profile.id),
+          class: "nav-item nav-link" %>
+        </nav>
         <h3>
           Studies
           <%= link_to new_user_study_path, class: "btn-add" do %>

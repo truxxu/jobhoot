@@ -4,14 +4,23 @@
 
       <div class="form-profile">
         <h2 class="text-center">Welcome, <%= @profile.name %></h2>
-        <%= link_to "Studies", user_study_path(current_user.user_profile.id)  %>
-        <%= link_to "Other Studies", user_other_study_path(current_user.user_profile.id) %>
-        <%= link_to "Languages", user_language_path(current_user.user_profile.id) %>
-        <%= link_to "Work Preferences", work_preference_path(current_user.user_profile.id) %>
-        <%= link_to "Skills", user_skill_path(current_user.user_profile.id) %>
-        <%= link_to "Working Experience", user_experience_path(current_user.user_profile.id) %>
-        <%= link_to "Personality Traits", user_trait_path(current_user.user_profile.id) %>
-        <%= link_to "Hobbies", user_hobby_path(current_user.user_profile.id) %>
+        <nav class="nav nav-pills nav-fill">
+          <%= link_to "About Me", user_profile_path(current_user.user_profile.id),
+            class: "nav-item nav-link active" %>
+          <%= link_to "Studies", user_study_path(current_user.user_profile.id),
+            class: "nav-item nav-link" %>
+          <%= link_to "Other Studies", user_other_study_path(current_user.user_profile.id), class: "nav-item nav-link" %>
+          <%= link_to "Languages", user_language_path(current_user.user_profile.id),
+            class: "nav-item nav-link" %>
+          <%= link_to "Work Preferences", work_preference_path(current_user.user_profile.id), class: "nav-item nav-link" %>
+          <%= link_to "Skills", user_skill_path(current_user.user_profile.id),
+            class: "nav-item nav-link" %>
+          <%= link_to "Working Experience", user_experience_path(current_user.user_profile.id), class: "nav-item nav-link" %>
+          <%= link_to "Personality Traits", user_trait_path(current_user.user_profile.id), class: "nav-item nav-link" %>
+          <%= link_to "Hobbies", user_hobby_path(current_user.user_profile.id),
+          class: "nav-item nav-link" %>
+        </nav>
+
         <h3>
           About Me
           <%= link_to edit_user_profile_path(@profile.id), class: "btn-add",
@@ -23,7 +32,7 @@
           <%= cl_image_tag(@profile.photo, width: 150, height: 150, crop: :thumb,
                            gravity: :face, radius: 75) %>
         <% else %>
-          <p>*Add a profile photo*</p>
+          <%= image_tag "profile.png", alt: "photo", height: "150px" %>
         <% end %>
         <h5><%= @profile.name %> <%= @profile.last_name %></h5>
         <p><strong>Sex:</strong> <%= @profile.sex %></p>
