@@ -17,9 +17,10 @@ class UserProfilesController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        render  pdf: "Your_filename",
-                template: "user_profiles/show.html.erb",
-                layout: 'pdf.html'
+        render  pdf: "CV - #{@profile.name} #{@profile.last_name}",
+                template: "user_profiles/pdf_profile.html.erb",
+                layout: 'pdf.html',
+                disposition: 'attachment'
       end
     end
   end
