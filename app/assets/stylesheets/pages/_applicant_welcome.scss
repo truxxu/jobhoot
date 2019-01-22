@@ -14,3 +14,25 @@
   border-bottom-style: solid;
   margin:15px;
 }
+
+#icon-grid {
+  padding: 20px 20px;
+}
+
+#welcome {
+  img {
+    margin-bottom: 20px;
+  }
+  h2 {
+    margin-bottom: 30px;
+  }
+  .btn-primary {
+    display: block;
+    margin: auto;
+    width: 40%;
+    margin-bottom: 15px;
+    color: #212529 !important;
+    border: 0.1em solid;
+    border-radius: 20px;
+  }
+}

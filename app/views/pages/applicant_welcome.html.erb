@@ -1,32 +1,34 @@
-<div class="container-fluid gradient">
+<div class="container-fluid gradient" id="welcome">
   <div class="row text-center">
-    <div class="col-12">
+    <div class="col-md-4 col-lg-4">
       <h1 class="user-title">Applicant</h1>
+      <%= image_tag "profile.png", alt: "alttext", height: "200px"  %>
+    </div>
+    <div class="col-md-8 col-lg-8" id="icon-grid">
       <h2>We will help you with:</h2>
+      <div class="row">
+        <div class="col-md-6 col-lg-4">
+          <%= image_tag "resume.svg", class: "icon-md" %>
+          <p class="icon-text">Creating your free jobhoot resume</p>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <%= image_tag "hiring.svg", class: "icon-md" %>
+          <p class="icon-text">Printing and sharing your free jobhoot resume with everyone</p>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <%= image_tag "job.svg", class: "icon-md" %>
+          <p class="icon-text">Search and apply for your dream job opportunity here for free</p>
+        </div>
+        <div class="col-md-6 col-lg-4 offset-lg-2">
+          <%= image_tag "interview.svg", class: "icon-md" %>
+          <p class="icon-text">Messaging and contacting your possible employer for free</p>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <%= image_tag "career.svg", class: "icon-md" %>
+          <p class="icon-text">Connecting you with your dream job</p>
+        </div>
+      </div>
     </div>
-    <div class="icon-box col-12 col-md-6 col-lg-4">
-      <%= image_tag "resume.svg", class: "icon-md" %>
-      <p class="icon-text">Creating your free jobhoot resume</p>
-    </div>
-    <div class="icon-box col-12 col-md-6 col-lg-4">
-      <%= image_tag "hiring.svg", class: "icon-md" %>
-      <p class="icon-text">Printing and sharing your free jobhoot resume with everyone</p>
-    </div>
-    <div class="icon-box col-12 col-md-6 col-lg-4">
-      <%= image_tag "job.svg", class: "icon-md" %>
-      <p class="icon-text">Search and apply for your dream job opportunity here for free</p>
-    </div>
-    <div class="icon-box col-12 col-md-6 col-lg-4 offset-lg-2">
-      <%= image_tag "interview.svg", class: "icon-md" %>
-      <p class="icon-text">Messaging and contacting your possible employer for free</p>
-    </div>
-    <div class="icon-box col-12 col-md-6 col-lg-4">
-      <%= image_tag "career.svg", class: "icon-md" %>
-      <p class="icon-text">Connecting you with your dream job</p>
-    </div>
-    <div class="icon-box col-12">
-      <%= link_to "Join Jobhoot", new_user_registration_path,
-      class: "btn btn-primary" %>
-    </div>
+    <%= link_to "Start Now", new_user_session_path, class: "btn btn-primary" %>
   </div>
 </div>

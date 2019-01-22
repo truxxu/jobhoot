@@ -1,0 +1,17 @@
+#about-box {
+  padding-top: 20px;
+  h2, h3 {
+    font-weight: bold !important;
+  }
+  h3 {
+    margin-top: 25px;
+  }
+  h2 {
+    border-bottom: 2px solid;
+  }
+}
+
+.vertical-align {
+  display: flex;
+  align-items: center;
+}
