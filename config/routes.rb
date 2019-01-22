@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   }
   root to: 'pages#home'
   get 'pages/applicant_welcome', as: 'applicant_welcome'
+  get 'pages/about_us', as: 'about_us'
   resources :user_profiles, only: [:show, :new, :create, :edit, :update]
   resources :user_studies, only: [:show, :new, :create, :destroy, :edit, :update]
   resources :user_other_studies, only: [:show, :new, :create, :destroy, :edit, :update]
