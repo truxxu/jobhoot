@@ -1,0 +1,196 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+
+      <div class="pdf-box">
+        <h2 class="text-center"><%= @profile.name %> <%= @profile.last_name %></h2>
+
+        <% if @profile.photo? %>
+          <%= cl_image_tag(@profile.photo, width: 150, height: 150, crop: :thumb,
+                           gravity: :face, radius: 75) %>
+        <% else %>
+          <%= wicked_pdf_image_tag "profile.png", alt: "photo", height: "150px" %>
+        <% end %>
+        <p><strong>Sex:</strong> <%= @profile.sex %></p>
+        <p><strong>Age:</strong> <%= @age %></p>
+        <p><strong>Country of Origin:</strong> <%= @origin_country %></p>
+        <p><strong>Residency Status:</strong> <%= @profile.residency_status %></p>
+        <p><strong>E-mail:</strong> <%= @user.email %></p>
+        <p><strong>Phone:</strong> <%= @profile.phone %></p>
+        <p><strong>Country of Residence:</strong> <%= @residence_country %></p>
+        <p><strong>Address:</strong> <%= @profile.address %></p>
+
+      </div>
+
+      <!-- Studies -->
+      <div class="pdf-box">
+        <h3>
+          Education
+        </h3>
+        <% @user_studies.each_with_index do |s, i| %>
+          <h4>
+            <%= s.study.title %>
+          </h4>
+          <p>
+            <%= s.start_date.strftime("%b %Y") %> - <%= s.end_date.strftime("%b %Y") %>
+          </p>
+          <p>
+            <strong>Degree:</strong>
+            <%= s.study_type %>
+          </p>
+          <p>
+            <strong>Status:</strong>
+            <%= s.status %>
+          </p>
+          <% if i < @user_studies.size - 1 %>
+            <hr>
+          <% end %>
+        <% end %>
+      </div>
+      <!-- Other Studies -->
+      <div class="pdf-box">
+        <h3>
+          Certifications
+        </h3>
+        <% @user_other_studies.each_with_index do |s, i| %>
+          <h4>
+            <%= s.other_study.title %>
+          </h4>
+          <p>
+            <%= s.start_date.strftime("%b %Y") %> - <%= s.end_date.strftime("%b %Y") %>
+          </p>
+          <p>
+            <strong>Type:</strong>
+            <%= s.study_type %>
+          </p>
+          <% if i < @user_other_studies.size - 1 %>
+            <hr>
+          <% end %>
+        <% end %>
+      </div>
+      <!-- Languages -->
+      <div class="pdf-box">
+        <h3>
+          Languages
+        </h3>
+        <% @user_languages.each_with_index do |s, i| %>
+          <h4>
+            <%= s.language.name %>
+          </h4>
+          <p>
+            <strong>Proficiency:</strong>
+            <%= s.proficiency %>%
+          </p>
+          <% if i < @user_languages.size - 1 %>
+            <hr>
+          <% end %>
+        <% end %>
+      </div>
+      <!-- Work Preferences -->
+      <div class="pdf-box">
+          <h3>
+            Work Preferences
+          </h3>
+          <% @preferences.each_with_index do |s, i| %>
+            <h4>
+              <%= s.study.title %>
+            </h4>
+            <p>
+              <strong>Contract Type:</strong>
+              <%= s.contract_type %>
+            </p>
+            <p>
+              <strong>Objectives:</strong>
+              <%= s.objectives %>
+            </p>
+            <% if i < @preferences.size - 1 %>
+              <hr>
+            <% end %>
+          <% end %>
+      </div>
+      <!-- Skills -->
+      <div class="pdf-box">
+          <h3>
+            Skills
+          </h3>
+          <% @skills.each_with_index do |t, i| %>
+            <h4>
+              <%= t.skill.name %>
+            </h4>
+          <% end %>
+      </div>
+      <!-- Working Experience -->
+      <div class="pdf-box">
+          <h3>
+            Working Experience
+          </h3>
+          <% @experiences.each_with_index do |s, i| %>
+            <h4>
+              <%= s.study.title %>
+            </h4>
+            <p>
+              <%= s.company_name %>
+            </p>
+            <p>
+              <%= s.start_date.strftime("%b %Y") %> - <%= s.end_date.strftime("%b %Y") %>
+            </p>
+            <p>
+              <strong>Contract Type:</strong>
+              <%= s.contract_type %>
+            </p>
+            <p>
+              <strong>Description:</strong>
+              <%= s.description %>
+            </p>
+            <p>
+              <strong>Skills:</strong>
+              <%= s.skill.name %>
+            </p>
+            <p>
+              <strong>Status:</strong>
+              <%= s.status %>
+            </p>
+            <% if i < @experiences.size - 1 %>
+              <hr>
+            <% end %>
+          <% end %>
+      </div>
+      <!-- Traits -->
+      <div class="pdf-box">
+          <h3>
+            Personality Traits
+          </h3>
+          <% @traits.each_with_index do |s, i| %>
+            <h4>
+              <%= s.trait.name %>
+            </h4>
+            <p>
+              <strong>Description:</strong>
+              <%= s.trait.description %>
+            </p>
+            <% if i < @traits.size - 1 %>
+              <hr>
+            <% end %>
+          <% end %>
+      </div>
+      <!-- Hobby -->
+      <div class="pdf-box">
+          <h3>
+            Hobbies
+          </h3>
+          <% @hobbies.each_with_index do |t, i| %>
+            <h4>
+              <%= t.name %>
+            </h4>
+            <p>
+              <strong>Category:</strong>
+              <%= t.category %>
+            </p>
+            <% if i < @hobbies.size - 1 %>
+              <hr>
+            <% end %>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</div>

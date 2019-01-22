@@ -32,19 +32,15 @@
             <% end %>
           </h4>
           <p>
+            <%= s.start_date.strftime("%b %Y") %> - <%= s.end_date.strftime("%b %Y") %>
+          </p>
+          <p>
             <strong>Degree:</strong>
             <%= s.study_type %>
           </p>
           <p>
             <strong>Status:</strong>
             <%= s.status %>
-          </p>
-          <p>
-            <strong>Started at:</strong>
-            <%= s.start_date.strftime("%F") %>
-          </p>
-          <p><strong>Finished at:</strong>
-            <%= s.end_date.strftime("%F") %>
           </p>
           <% if i < @study.size - 1 %>
             <hr>
