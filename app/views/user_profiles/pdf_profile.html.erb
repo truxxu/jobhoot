@@ -3,13 +3,10 @@
     <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
 
       <div class="form-profile">
-        <h3>
-          About Me
-          <%= link_to edit_user_profile_path(@profile.id), class: "btn-add",
-          "data-toggle" => "modal", "data-target" => "#" do %>
-            <i class="far fa-edit"></i>
-          <% end %>
-        </h3>
+        <h2 class="text-center">
+          Welcome <%= @profile.name %> <%= @profile.last_name %>
+        </h2>
+
         <% if @profile.photo? %>
           <%= cl_image_tag(@profile.photo, width: 150, height: 150, crop: :thumb,
                            gravity: :face, radius: 75) %>

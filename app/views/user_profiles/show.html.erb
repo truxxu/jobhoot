@@ -37,7 +37,6 @@
         <% end %>
         <h5><%= @profile.name %> <%= @profile.last_name %></h5>
         <p><strong>Sex:</strong> <%= @profile.sex %></p>
-        <p><strong>Birthdate:</strong> <%= @profile.birth_date.strftime("%F") %></p>
         <p><strong>Age:</strong> <%= @age %></p>
         <p><strong>Country of Origin:</strong> <%= @origin_country %></p>
         <p><strong>Residency Status:</strong> <%= @profile.residency_status %></p>
@@ -63,19 +62,15 @@
             <% end %>
           </h4>
           <p>
+            <%= s.start_date.strftime("%b %Y") %> - <%= s.end_date.strftime("%b %Y") %>
+          </p>
+          <p>
             <strong>Degree:</strong>
             <%= s.study_type %>
           </p>
           <p>
             <strong>Status:</strong>
             <%= s.status %>
-          </p>
-          <p>
-            <strong>Started at:</strong>
-            <%= s.start_date.strftime("%F") %>
-          </p>
-          <p><strong>Finished at:</strong>
-            <%= s.end_date.strftime("%F") %>
           </p>
           <% if i < @user_studies.size - 1 %>
             <hr>
@@ -98,19 +93,11 @@
             <% end %>
           </h4>
           <p>
-            <strong>Title:</strong>
-            <%= s.other_study.title %>
+            <%= s.start_date.strftime("%b %Y") %> - <%= s.end_date.strftime("%b %Y") %>
           </p>
           <p>
             <strong>Type:</strong>
             <%= s.study_type %>
-          </p>
-          <p>
-            <strong>Started at:</strong>
-            <%= s.start_date.strftime("%F") %>
-          </p>
-          <p><strong>Finished at:</strong>
-            <%= s.end_date.strftime("%F") %>
           </p>
           <% if i < @user_other_studies.size - 1 %>
             <hr>
@@ -206,6 +193,9 @@
               <%= s.company_name %>
             </p>
             <p>
+              <%= s.start_date.strftime("%b %Y") %> - <%= s.end_date.strftime("%b %Y") %>
+            </p>
+            <p>
               <strong>Contract Type:</strong>
               <%= s.contract_type %>
             </p>
@@ -220,14 +210,6 @@
             <p>
               <strong>Status:</strong>
               <%= s.status %>
-            </p>
-            <p>
-              <strong>Started at:</strong>
-              <%= s.start_date.strftime("%F") %>
-            </p>
-            <p>
-              <strong>Finished at:</strong>
-              <%= s.end_date.strftime("%F") %>
             </p>
             <% if i < @experiences.size - 1 %>
               <hr>
