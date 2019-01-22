@@ -20,7 +20,8 @@ class UserProfilesController < ApplicationController
         render  pdf: "CV - #{@profile.name} #{@profile.last_name}",
                 template: "user_profiles/pdf_profile.html.erb",
                 layout: 'pdf.html',
-                disposition: 'attachment'
+                disposition: 'attachment',
+                no_background: true
       end
     end
   end
