@@ -1,4 +1,4 @@
-<%= simple_form_for @study do |f| %>
+<%= simple_form_for [@profile, @study] do |f| %>
   <%= f.association :other_study, label: "Title" %>
   <%= f.input :study_type, collection: ["Certification", "License", "Course",
                                         "Other"], label: "Type" %>

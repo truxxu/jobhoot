@@ -1,13 +1,16 @@
 class WorkPreferencesController < ApplicationController
   def new
+    @profile = UserProfile.find(params[:user_profile_id])
     @preference = WorkPreference.new
   end
 
-  def show
-    @preference = WorkPreference.where(params[:user_profile_id])
+  def index
+    @profile = UserProfile.find(params[:user_profile_id])
+    @preference = WorkPreference.where(user_profile_id: params[:user_profile_id])
   end
 
   def create
+    @profile = UserProfile.find(params[:user_profile_id])
     @preference = WorkPreference.new(preference_params)
     @preference.user_profile = current_user.user_profile
     if @preference.save
@@ -15,7 +18,7 @@ class WorkPreferencesController < ApplicationController
       flash[:notice] = "Preference Added"
     else
       flash[:alert] = "Please verify the following information:"
-      render new_work_preference_path
+      render :new
       puts @preference.errors.full_messages
     end
   end
@@ -28,10 +31,12 @@ class WorkPreferencesController < ApplicationController
   end
 
   def edit
+    @profile = UserProfile.find(params[:user_profile_id])
     @preference = WorkPreference.find(params[:id])
   end
 
   def update
+    @profile = UserProfile.find(params[:user_profile_id])
     @preference = WorkPreference.find(params[:id])
     @preference.update(preference_params)
     if @preference.save
@@ -39,7 +44,7 @@ class WorkPreferencesController < ApplicationController
       flash[:notice] = "Preference Updated"
     else
       flash[:alert] = "Please verify the following information:"
-      render new_work_preference_path
+      render :new
       puts @preference.errors.full_messages
     end
   end

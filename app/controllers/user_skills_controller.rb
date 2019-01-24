@@ -1,13 +1,16 @@
 class UserSkillsController < ApplicationController
   def new
+    @profile = UserProfile.find(params[:user_profile_id])
     @skill = UserSkill.new
   end
 
-  def show
-    @skill = UserSkill.where(params[:user_profile_id])
+  def index
+    @profile = UserProfile.find(params[:user_profile_id])
+    @skill = UserSkill.where(user_profile_id: params[:user_profile_id])
   end
 
   def create
+    @profile = UserProfile.find(params[:user_profile_id])
     @skill = UserSkill.new(skill_params)
     @skill.user_profile = current_user.user_profile
     if @skill.save

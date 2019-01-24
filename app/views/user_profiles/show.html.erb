@@ -7,17 +7,17 @@
         <nav class="nav nav-pills nav-fill">
           <%= link_to "About Me", user_profile_path(current_user.user_profile.id),
           class: "nav-item nav-link active" %>
-          <%= link_to "Studies", user_study_path(current_user.user_profile.id),
+          <%= link_to "Education", user_profile_user_studies_path(current_user.user_profile.id),
           class: "nav-item nav-link" %>
-          <%= link_to "Other Studies", user_other_study_path(current_user.user_profile.id), class: "nav-item nav-link" %>
-          <%= link_to "Languages", user_language_path(current_user.user_profile.id),
+          <%= link_to "Certifications", user_profile_user_other_studies_path(current_user.user_profile.id), class: "nav-item nav-link" %>
+          <%= link_to "Languages", user_profile_user_languages_path(current_user.user_profile.id),
           class: "nav-item nav-link" %>
-          <%= link_to "Work Preferences", work_preference_path(current_user.user_profile.id), class: "nav-item nav-link" %>
-          <%= link_to "Skills", user_skill_path(current_user.user_profile.id),
+          <%= link_to "Work Preferences", user_profile_work_preferences_path(current_user.user_profile.id), class: "nav-item nav-link" %>
+          <%= link_to "Skills", user_profile_user_skills_path(current_user.user_profile.id),
           class: "nav-item nav-link" %>
-          <%= link_to "Working Experience", user_experience_path(current_user.user_profile.id), class: "nav-item nav-link" %>
-          <%= link_to "Personality Traits", user_trait_path(current_user.user_profile.id), class: "nav-item nav-link" %>
-          <%= link_to "Hobbies", user_hobby_path(current_user.user_profile.id),
+          <%= link_to "Working Experience", user_profile_user_experiences_path(current_user.user_profile.id), class: "nav-item nav-link" %>
+          <%= link_to "Personality Traits", user_profile_user_traits_path(current_user.user_profile.id), class: "nav-item nav-link" %>
+          <%= link_to "Hobbies", user_profile_user_hobbies_path(current_user.user_profile.id),
           class: "nav-item nav-link" %>
         </nav>
 
@@ -52,219 +52,237 @@
       <div class="form-profile">
         <h3>
           Education
-          <%= link_to new_user_study_path, class: "btn-add" do %>
+          <%= link_to new_user_profile_user_study_path(current_user.user_profile.id),
+          class: "btn-add" do %>
           <i class="fas fa-plus"></i>
           <% end %>
         </h3>
         <% @user_studies.each_with_index do |s, i| %>
-        <h4>
-          <%= s.study.title %>
-          <%= link_to edit_user_study_path(s.id), class: "btn-add" do %>
-          <i class="far fa-edit"></i>
+          <h4>
+            <%= s.study.title %>
+            <%= link_to edit_user_profile_user_study_path(@profile, s.id), class: "btn-add" do %>
+            <i class="far fa-edit"></i>
+            <% end %>
+          </h4>
+          <p>
+            <%= s.start_date.strftime("%b %Y") %> - <%= s.end_date.strftime("%b %Y") %>
+             |
+            <%= s.duration %>
+          </p>
+          <p>
+            <strong>Degree:</strong>
+            <%= s.study_type %>
+          </p>
+          <p>
+            <strong>Status:</strong>
+            <%= s.status %>
+          </p>
+          <% if i < @user_studies.size - 1 %>
+            <hr>
           <% end %>
-        </h4>
-        <p>
-          <%= s.start_date.strftime("%b %Y") %> - <%= s.end_date.strftime("%b %Y") %>
-        </p>
-        <p>
-          <strong>Degree:</strong>
-          <%= s.study_type %>
-        </p>
-        <p>
-          <strong>Status:</strong>
-          <%= s.status %>
-        </p>
-        <% if i < @user_studies.size - 1 %>
-        <hr>
-        <% end %>
         <% end %>
       </div>
       <!-- Other Studies -->
       <div class="form-profile">
         <h3>
           Certifications
-          <%= link_to new_user_other_study_path, class: "btn-add" do %>
+          <%= link_to new_user_profile_user_other_study_path(current_user.user_profile.id),
+          class: "btn-add" do %>
           <i class="fas fa-plus"></i>
           <% end %>
         </h3>
         <% @user_other_studies.each_with_index do |s, i| %>
-        <h4>
-          <%= s.other_study.title %>
-          <%= link_to edit_user_other_study_path(s.id), class: "btn-add" do %>
-          <i class="far fa-edit"></i>
+          <h4>
+            <%= s.other_study.title %>
+            <%= link_to edit_user_profile_user_other_study_path(@profile, s.id), class: "btn-add" do %>
+            <i class="far fa-edit"></i>
+            <% end %>
+          </h4>
+          <p>
+            <%= s.start_date.strftime("%b %Y") %> - <%= s.end_date.strftime("%b %Y") %>
+             |
+            <%= s.duration %>
+          </p>
+          <p>
+            <strong>Type:</strong>
+            <%= s.study_type %>
+          </p>
+          <% if i < @user_other_studies.size - 1 %>
+            <hr>
           <% end %>
-        </h4>
-        <p>
-          <%= s.start_date.strftime("%b %Y") %> - <%= s.end_date.strftime("%b %Y") %>
-        </p>
-        <p>
-          <strong>Type:</strong>
-          <%= s.study_type %>
-        </p>
-        <% if i < @user_other_studies.size - 1 %>
-        <hr>
-        <% end %>
         <% end %>
       </div>
       <!-- Languages -->
       <div class="form-profile">
         <h3>
           Languages
-          <%= link_to new_user_language_path, class: "btn-add" do %>
+          <%= link_to new_user_profile_user_language_path(current_user.user_profile.id),
+          class: "btn-add" do %>
           <i class="fas fa-plus"></i>
           <% end %>
         </h3>
         <% @user_languages.each_with_index do |s, i| %>
-        <h4>
-          <%= s.language.name %>
-          <%= link_to edit_user_language_path(s.id), class: "btn-add" do %>
-          <i class="far fa-edit"></i>
+          <h4>
+            <%= s.language.name %>
+            <%= link_to edit_user_profile_user_language_path(@profile, s.id),
+            class: "btn-add" do %>
+            <i class="far fa-edit"></i>
+            <% end %>
+          </h4>
+          <p>
+            <strong>Proficiency:</strong>
+            <%= s.proficiency %>%
+          </p>
+          <% if i < @user_languages.size - 1 %>
+            <hr>
           <% end %>
-        </h4>
-        <p>
-          <strong>Proficiency:</strong>
-          <%= s.proficiency %>%
-        </p>
-        <% if i < @user_languages.size - 1 %>
-        <hr>
-        <% end %>
         <% end %>
       </div>
       <!-- Work Preferences -->
       <div class="form-profile">
         <h3>
           Work Preferences
-          <%= link_to new_work_preference_path, class: "btn-add" do %>
-          <i class="fas fa-plus"></i>
+          <%= link_to new_user_profile_work_preference_path(current_user.user_profile.id),
+          class: "btn-add" do %>
+            <i class="fas fa-plus"></i>
           <% end %>
         </h3>
         <% @preferences.each_with_index do |s, i| %>
-        <h4>
-          <%= s.study.title %>
-          <%= link_to edit_work_preference_path(s.id), class: "btn-add" do %>
-          <i class="far fa-edit"></i>
+          <h4>
+            <%= s.study.title %>
+            <%= link_to edit_user_profile_work_preference_path(@profile, s.id),
+            class: "btn-add" do %>
+            <i class="far fa-edit"></i>
+            <% end %>
+          </h4>
+          <p>
+            <strong>Contract Type:</strong>
+            <%= s.contract_type %>
+          </p>
+          <p>
+            <strong>Objectives:</strong>
+            <%= s.objectives %>
+          </p>
+          <% if i < @preferences.size - 1 %>
+            <hr>
           <% end %>
-        </h4>
-        <p>
-          <strong>Contract Type:</strong>
-          <%= s.contract_type %>
-        </p>
-        <p>
-          <strong>Objectives:</strong>
-          <%= s.objectives %>
-        </p>
-        <% if i < @preferences.size - 1 %>
-        <hr>
-        <% end %>
         <% end %>
       </div>
       <!-- Skills -->
       <div class="form-profile">
         <h3>
           Skills
-          <%= link_to new_user_skill_path, class: "btn-add" do %>
-          <i class="fas fa-plus"></i>
+          <%= link_to new_user_profile_user_skill_path(current_user.user_profile.id),
+          class: "btn-add" do %>
+            <i class="fas fa-plus"></i>
           <% end %>
         </h3>
         <% @skills.each_with_index do |t, i| %>
-        <h4>
-          <%= t.skill.name %>
-          <%= link_to user_skill_path(t.id), method: :delete,
-          class: "btn-add" do %>
-          <i class="far fa-trash-alt"></i>
-          <% end %>
-        </h4>
+          <h4>
+            <%= t.skill.name %>
+            <%= link_to user_profile_user_skill_path(@profile, t.id),
+            method: :delete, class: "btn-add" do %>
+              <i class="far fa-trash-alt"></i>
+            <% end %>
+          </h4>
         <% end %>
       </div>
       <!-- Working Experience -->
       <div class="form-profile">
         <h3>
           Working Experience
-          <%= link_to new_user_experience_path, class: "btn-add" do %>
-          <i class="fas fa-plus"></i>
+          <%= link_to new_user_profile_user_experience_path(current_user.user_profile.id),
+          class: "btn-add" do %>
+            <i class="fas fa-plus"></i>
           <% end %>
         </h3>
         <% @experiences.each_with_index do |s, i| %>
-        <h4>
-          <%= s.study.title %>
-          <%= link_to edit_user_experience_path(s.id), class: "btn-add" do %>
-          <i class="far fa-edit"></i>
+          <h4>
+            <%= s.study.title %>
+            <%= link_to edit_user_profile_user_experience_path(@profile, s.id),
+            class: "btn-add" do %>
+              <i class="far fa-edit"></i>
+            <% end %>
+          </h4>
+          <p>
+            <%= s.company_name %>
+          </p>
+          <p>
+            <%= s.start_date.strftime("%b %Y") %> - <%= s.end_date.strftime("%b %Y") %>
+             |
+            <%= s.duration %>
+          </p>
+          <p>
+            <strong>Contract Type:</strong>
+            <%= s.contract_type %>
+          </p>
+          <p>
+            <strong>Description:</strong>
+            <%= s.description %>
+          </p>
+          <p>
+            <strong>Skills:</strong>
+            <%= s.skill.name %>
+          </p>
+          <p>
+            <strong>Status:</strong>
+            <%= s.status %>
+          </p>
+          <% if i < @experiences.size - 1 %>
+            <hr>
           <% end %>
-        </h4>
-        <p>
-          <%= s.company_name %>
-        </p>
-        <p>
-          <%= s.start_date.strftime("%b %Y") %> - <%= s.end_date.strftime("%b %Y") %>
-        </p>
-        <p>
-          <strong>Contract Type:</strong>
-          <%= s.contract_type %>
-        </p>
-        <p>
-          <strong>Description:</strong>
-          <%= s.description %>
-        </p>
-        <p>
-          <strong>Skills:</strong>
-          <%= s.skill.name %>
-        </p>
-        <p>
-          <strong>Status:</strong>
-          <%= s.status %>
-        </p>
-        <% if i < @experiences.size - 1 %>
-        <hr>
-        <% end %>
         <% end %>
       </div>
       <!-- Traits -->
       <div class="form-profile">
         <h3>
           Personality Traits
-          <%= link_to new_user_trait_path, class: "btn-add" do %>
-          <i class="fas fa-plus"></i>
+          <%= link_to new_user_profile_user_trait_path(current_user.user_profile.id),
+          class: "btn-add" do %>
+            <i class="fas fa-plus"></i>
           <% end %>
         </h3>
         <% @traits.each_with_index do |s, i| %>
-        <h4>
-          <%= s.trait.name %>
-          <%= link_to user_trait_path(s.id), method: :delete,
-          class: "btn-add" do %>
-          <i class="far fa-trash-alt"></i>
+          <h4>
+            <%= s.trait.name %>
+            <%= link_to user_profile_user_trait_path(@profile, s.id), method: :delete,
+            class: "btn-add" do %>
+            <i class="far fa-trash-alt"></i>
+            <% end %>
+          </h4>
+          <p>
+            <strong>Description:</strong>
+            <%= s.trait.description %>
+          </p>
+          <% if i < @traits.size - 1 %>
+            <hr>
           <% end %>
-        </h4>
-        <p>
-          <strong>Description:</strong>
-          <%= s.trait.description %>
-        </p>
-        <% if i < @traits.size - 1 %>
-        <hr>
-        <% end %>
         <% end %>
       </div>
       <!-- Hobby -->
       <div class="form-profile">
         <h3>
           Hobbies
-          <%= link_to new_user_hobby_path, class: "btn-add" do %>
-          <i class="fas fa-plus"></i>
+          <%= link_to new_user_profile_user_hobby_path(current_user.user_profile.id),
+          class: "btn-add" do %>
+            <i class="fas fa-plus"></i>
           <% end %>
         </h3>
         <% @hobbies.each_with_index do |t, i| %>
-        <h4>
-          <%= t.name %>
-          <%= link_to edit_user_hobby_path(t.id), class: "btn-add" do %>
-          <i class="far fa-edit"></i>
+          <h4>
+            <%= t.name %>
+            <%= link_to edit_user_profile_user_hobby_path(@profile, t.id),
+            class: "btn-add" do %>
+            <i class="far fa-edit"></i>
+            <% end %>
+          </h4>
+          <p>
+            <strong>Category:</strong>
+            <%= t.category %>
+          </p>
+          <% if i < @hobbies.size - 1 %>
+            <hr>
           <% end %>
-        </h4>
-        <p>
-          <strong>Category:</strong>
-          <%= t.category %>
-        </p>
-        <% if i < @hobbies.size - 1 %>
-        <hr>
-        <% end %>
         <% end %>
       </div>
     </div>

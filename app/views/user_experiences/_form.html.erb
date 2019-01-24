@@ -1,4 +1,4 @@
-<%= simple_form_for @experience do |f| %>
+<%= simple_form_for [@profile, @experience] do |f| %>
   <%= f.input :company_name %>
   <%= f.association :study, input_html: {class: 'select2-list'},
   label: "Position" %>

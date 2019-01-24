@@ -1,13 +1,16 @@
 class UserHobbiesController < ApplicationController
   def new
+    @profile = UserProfile.find(params[:user_profile_id])
     @hobby = UserHobby.new
   end
 
-  def show
-    @hobby = UserHobby.where(params[:user_profile_id])
+  def index
+    @profile = UserProfile.find(params[:user_profile_id])
+    @hobby = UserHobby.where(user_profile_id: params[:user_profile_id])
   end
 
   def create
+    @profile = UserProfile.find(params[:user_profile_id])
     @hobby = UserHobby.new(hobby_params)
     @hobby.user_profile = current_user.user_profile
     if @hobby.save
@@ -15,7 +18,7 @@ class UserHobbiesController < ApplicationController
       flash[:notice] = "Hobby Added"
     else
       flash[:alert] = "Please verify the following information:"
-      render new_user_hobby_path
+      render :new
       puts @hobby.errors.full_messages
     end
   end
@@ -28,10 +31,12 @@ class UserHobbiesController < ApplicationController
   end
 
   def edit
+    @profile = UserProfile.find(params[:user_profile_id])
     @hobby = UserHobby.find(params[:id])
   end
 
   def update
+    @profile = UserProfile.find(params[:user_profile_id])
     @hobby = UserHobby.find(params[:id])
     @hobby.update(hobby_params)
     if @hobby.save
@@ -39,7 +44,7 @@ class UserHobbiesController < ApplicationController
       flash[:notice] = "Hobby Updated"
     else
       flash[:alert] = "Please verify the following information:"
-      render new_user_hobby_path
+      render :new
       puts @hobby.errors.full_messages
     end
   end
