@@ -5,7 +5,7 @@
   <div class="nav-bar-right d-flex align-items-center">
     <% if user_signed_in? %>
       <% if !current_user.user_profile.nil? %>
-        <%= link_to "Profile", user_profile_path(current_user.user_profile.id),
+        <%= link_to "My Profile", user_profile_path(current_user.user_profile.id),
         class: "px-3 d-none d-sm-block navbar-wagon-item navbar-wagon-link" %>
         <div class="dropdown  d-none d-sm-block">
           <% if current_user.user_profile.photo? %>
@@ -41,6 +41,7 @@
     <% else %>
       <%= link_to "Login", new_user_session_path, class: "px-3 d-none d-sm-block navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Register", new_user_registration_path, class: "px-3 d-none d-sm-block navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "About Us", about_us_path, class: "px-3 d-none d-sm-block navbar-wagon-item navbar-wagon-link" %>
     <% end %>
   </div>
   <div class="dropdown burger d-block d-sm-none">
