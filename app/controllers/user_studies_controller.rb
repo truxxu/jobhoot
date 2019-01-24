@@ -10,7 +10,10 @@ class UserStudiesController < ApplicationController
   def create
     @study = UserStudy.new(study_params)
     @study.user_profile = current_user.user_profile
-    if @study.save
+    if @study.check_date? == false
+      flash[:alert] = "Wrong date"
+      render new_user_study_path
+    elsif @study.save
       redirect_to user_profile_path(:user_profile_id)
       flash[:notice] = "Study Added"
     else
@@ -34,7 +37,10 @@ class UserStudiesController < ApplicationController
   def update
     @study = UserStudy.find(params[:id])
     @study.update(study_params)
-    if @study.save
+    if @study.check_date? == false
+      flash[:alert] = "Wrong date"
+      render new_user_study_path
+    elsif @study.save
       redirect_to user_profile_path(:user_profile_id)
       flash[:notice] = "Study Updated"
     else
@@ -48,6 +54,6 @@ class UserStudiesController < ApplicationController
 
   def study_params
     params.require(:user_study).permit(:user_profile_id, :study_id, :status,
-                                       :study_type, :start_date, :end_date)
+     :study_type, :start_date, :end_date)
   end
 end

@@ -10,7 +10,10 @@ class UserExperiencesController < ApplicationController
   def create
     @experience = UserExperience.new(experience_params)
     @experience.user_profile = current_user.user_profile
-    if @experience.save
+    if @experience.check_date? == false
+      flash[:alert] = "Wrong date"
+      render new_user_experience_path
+    elsif @experience.save
       redirect_to user_profile_path(:user_profile_id)
       flash[:notice] = "Experience Added"
     else
@@ -34,7 +37,10 @@ class UserExperiencesController < ApplicationController
   def update
     @experience = UserExperience.find(params[:id])
     @experience.update(experience_params)
-    if @experience.save
+    if @experience.check_date? == false
+      flash[:alert] = "Wrong date"
+      render new_user_experience_path
+    elsif @experience.save
       redirect_to user_profile_path(:user_profile_id)
       flash[:notice] = "Experience Updated"
     else
@@ -48,8 +54,8 @@ class UserExperiencesController < ApplicationController
 
   def experience_params
     params.require(:user_experience).permit(:user_profile_id, :study_id,
-                                            :status, :company_name,
-                                            :contract_type, :description,
-                                            :skill_id, :start_date, :end_date)
+      :status, :company_name,
+      :contract_type, :description,
+      :skill_id, :start_date, :end_date)
   end
 end

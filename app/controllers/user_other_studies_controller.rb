@@ -10,12 +10,15 @@ class UserOtherStudiesController < ApplicationController
   def create
     @study = UserOtherStudy.new(study_params)
     @study.user_profile = current_user.user_profile
-    if @study.save
+    if @study.check_date? == false
+      flash[:alert] = "Wrong date"
+      render new_user_study_path
+    elsif @study.save
       redirect_to user_profile_path(:user_profile_id)
       flash[:notice] = "Study Added"
     else
       flash[:alert] = "Please verify the following information:"
-      render new_user_other_study_path
+      render new_user_study_path
       puts @study.errors.full_messages
     end
   end
@@ -34,12 +37,15 @@ class UserOtherStudiesController < ApplicationController
   def update
     @study = UserOtherStudy.find(params[:id])
     @study.update(study_params)
-    if @study.save
+    if @study.check_date? == false
+      flash[:alert] = "Wrong date"
+      render new_user_study_path
+    elsif @study.save
       redirect_to user_profile_path(:user_profile_id)
       flash[:notice] = "Study Updated"
     else
       flash[:alert] = "Please verify the following information:"
-      render new_user_other_study_path
+      render new_user_study_path
       puts @study.errors.full_messages
     end
   end
@@ -48,6 +54,6 @@ class UserOtherStudiesController < ApplicationController
 
   def study_params
     params.require(:user_other_study).permit(:user_profile_id, :other_study_id,
-                                             :study_type, :start_date, :end_date)
+     :study_type, :start_date, :end_date)
   end
 end
