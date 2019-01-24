@@ -1,4 +1,4 @@
-<%= simple_form_for @language do |f| %>
+<%= simple_form_for [@profile, @language] do |f| %>
   <%= f.association :language, input_html: {class: 'select2-list'},
   label: "Name" %>
   <%= f.input :proficiency, collection: 1..100 %>

@@ -1,24 +1,26 @@
 class UserOtherStudiesController < ApplicationController
   def new
+    @profile = UserProfile.find(params[:user_profile_id])
     @study = UserOtherStudy.new
   end
 
-  def show
+  def index
     @study = UserOtherStudy.where(params[:user_profile_id])
   end
 
   def create
+    @profile = UserProfile.find(params[:user_profile_id])
     @study = UserOtherStudy.new(study_params)
     @study.user_profile = current_user.user_profile
     if @study.check_date? == false
-      flash[:alert] = "Wrong date"
-      render new_user_study_path
+      flash[:alert] = "Please enter a valid date"
+      render :new
     elsif @study.save
       redirect_to user_profile_path(:user_profile_id)
       flash[:notice] = "Study Added"
     else
       flash[:alert] = "Please verify the following information:"
-      render new_user_study_path
+      render :new
       puts @study.errors.full_messages
     end
   end
@@ -31,21 +33,23 @@ class UserOtherStudiesController < ApplicationController
   end
 
   def edit
+    @profile = UserProfile.find(params[:user_profile_id])
     @study = UserOtherStudy.find(params[:id])
   end
 
   def update
+    @profile = UserProfile.find(params[:user_profile_id])
     @study = UserOtherStudy.find(params[:id])
     @study.update(study_params)
     if @study.check_date? == false
-      flash[:alert] = "Wrong date"
-      render new_user_study_path
+      flash[:alert] = "Please enter a valid date"
+      render :new
     elsif @study.save
       redirect_to user_profile_path(:user_profile_id)
       flash[:notice] = "Study Updated"
     else
       flash[:alert] = "Please verify the following information:"
-      render new_user_study_path
+      render :new
       puts @study.errors.full_messages
     end
   end

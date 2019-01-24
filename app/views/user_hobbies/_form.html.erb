@@ -1,4 +1,4 @@
-<%= simple_form_for @hobby do |f| %>
+<%= simple_form_for [@profile, @hobby] do |f| %>
 <%= f.input :name %>
 <%= f.input :category, collection: ["Collecting", "Making and Tinkering",
                                     "Outdoor Recreation", "Gardening",

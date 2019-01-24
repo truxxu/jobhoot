@@ -1,4 +1,4 @@
-<%= simple_form_for @study do |f| %>
+<%= simple_form_for [@profile, @study] do |f| %>
   <%= f.association :study, input_html: {class: 'select2-list'},
   label: "Title" %>
   <%= f.input :study_type, collection: ["Year 9", "Year 10", "Year 11",

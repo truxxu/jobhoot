@@ -4,7 +4,7 @@
       <div class="form-login">
 
         <h2 class="text-center">Add a Skill to your Profile</h2>
-        <%= simple_form_for @skill do |f| %>
+        <%= simple_form_for [@profile, @skill] do |f| %>
           <%= f.association :skill, input_html: {class: 'select2-list'} %>
           <%= f.button :submit, class: "btn btn-primary" %>
         <% end %>

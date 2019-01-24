@@ -1,13 +1,15 @@
 class UserTraitsController < ApplicationController
   def new
+    @profile = UserProfile.find(params[:user_profile_id])
     @trait = UserTrait.new
   end
 
-  def show
+  def index
     @trait = UserTrait.where(params[:user_profile_id])
   end
 
   def create
+    @profile = UserProfile.find(params[:user_profile_id])
     @trait = UserTrait.new(trait_params)
     @trait.user_profile = current_user.user_profile
     if @trait.save
@@ -15,7 +17,7 @@ class UserTraitsController < ApplicationController
       flash[:notice] = "Personality Trait Added"
     else
       flash[:alert] = "Please verify the following information:"
-      render new_user_trait_path
+      render :new
       puts @trait.errors.full_messages
     end
   end
