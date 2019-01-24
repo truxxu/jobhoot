@@ -1,6 +1,7 @@
 class UserStudiesController < ApplicationController
   def index
-    @study = UserStudy.where(params[:study_id])
+    @profile = UserProfile.find(params[:user_profile_id])
+    @study = UserStudy.where(user_profile_id: params[:user_profile_id])
   end
 
   def new

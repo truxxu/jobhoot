@@ -5,7 +5,8 @@ class UserOtherStudiesController < ApplicationController
   end
 
   def index
-    @study = UserOtherStudy.where(params[:user_profile_id])
+    @profile = UserProfile.find(params[:user_profile_id])
+    @study = UserOtherStudy.where(user_profile_id: params[:user_profile_id])
   end
 
   def create

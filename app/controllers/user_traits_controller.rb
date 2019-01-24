@@ -5,7 +5,8 @@ class UserTraitsController < ApplicationController
   end
 
   def index
-    @trait = UserTrait.where(params[:user_profile_id])
+    @profile = UserProfile.find(params[:user_profile_id])
+    @trait = UserTrait.where(user_profile_id: params[:user_profile_id])
   end
 
   def create

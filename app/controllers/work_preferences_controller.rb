@@ -5,7 +5,8 @@ class WorkPreferencesController < ApplicationController
   end
 
   def index
-    @preference = WorkPreference.where(params[:user_profile_id])
+    @profile = UserProfile.find(params[:user_profile_id])
+    @preference = WorkPreference.where(user_profile_id: params[:user_profile_id])
   end
 
   def create

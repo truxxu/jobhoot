@@ -5,7 +5,8 @@ class UserSkillsController < ApplicationController
   end
 
   def index
-    @skill = UserSkill.where(params[:user_profile_id])
+    @profile = UserProfile.find(params[:user_profile_id])
+    @skill = UserSkill.where(user_profile_id: params[:user_profile_id])
   end
 
   def create

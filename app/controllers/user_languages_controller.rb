@@ -5,7 +5,8 @@ class UserLanguagesController < ApplicationController
   end
 
   def index
-    @language = UserLanguage.where(params[:user_profile_id])
+    @profile = UserProfile.find(params[:user_profile_id])
+    @language = UserLanguage.where(user_profile_id: params[:user_profile_id])
   end
 
   def create
