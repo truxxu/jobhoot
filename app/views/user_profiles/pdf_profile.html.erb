@@ -6,7 +6,7 @@
         <h2 class="text-center"><%= @profile.name %> <%= @profile.last_name %></h2>
 
         <% if @profile.photo? %>
-          <%= cl_image_tag(@profile.photo, width: 150, height: 150, crop: :thumb,
+          <%= wicked_pdf_image_tag(@profile.photo, width: 150, height: 150, crop: :thumb,
                            gravity: :face, radius: 75) %>
         <% else %>
           <%= wicked_pdf_image_tag "profile.png", alt: "photo", height: "150px" %>
