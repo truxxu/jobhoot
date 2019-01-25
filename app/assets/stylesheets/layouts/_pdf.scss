@@ -9,12 +9,14 @@
     margin: 10px 0 10px 0;
   }
   h3 {
-    text-decoration: underline #212529;
+    text-decoration: underline #212529 !important;
   }
-  img {
+  .photo {
     display: block;
     margin: auto;
     height: 150px;
-    border-radius: 75px;
+  }
+  .icon {
+    height: 50px;
   }
 }

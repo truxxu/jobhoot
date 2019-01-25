@@ -6,13 +6,13 @@
         <h2 class="text-center"><%= @profile.name %> <%= @profile.last_name %></h2>
 
         <% if @profile.photo? %>
-          <%= wicked_pdf_image_tag(@profile.photo, width: 150, height: 150, crop: :thumb,
-                           gravity: :face, radius: 75) %>
+          <%= wicked_pdf_image_tag @profile.photo, class: "photo" %>
         <% else %>
           <%= wicked_pdf_image_tag "profile.png", alt: "photo", height: "150px" %>
         <% end %>
-        <p><strong>Sex:</strong> <%= @profile.sex %></p>
+
         <p><strong>Age:</strong> <%= @age %></p>
+        <p><strong>Sex:</strong> <%= @profile.sex %></p>
         <p><strong>Country of Origin:</strong> <%= @origin_country %></p>
         <p><strong>Residency Status:</strong> <%= @profile.residency_status %></p>
         <p><strong>E-mail:</strong> <%= @user.email %></p>
@@ -33,6 +33,8 @@
           </h4>
           <p>
             <%= s.start_date.strftime("%b %Y") %> - <%= s.end_date.strftime("%b %Y") %>
+             |
+            <%= s.duration %>
           </p>
           <p>
             <strong>Degree:</strong>
@@ -58,6 +60,8 @@
           </h4>
           <p>
             <%= s.start_date.strftime("%b %Y") %> - <%= s.end_date.strftime("%b %Y") %>
+             |
+            <%= s.duration %>
           </p>
           <p>
             <strong>Type:</strong>
@@ -133,6 +137,8 @@
             </p>
             <p>
               <%= s.start_date.strftime("%b %Y") %> - <%= s.end_date.strftime("%b %Y") %>
+               |
+              <%= s.duration %>
             </p>
             <p>
               <strong>Contract Type:</strong>
