@@ -11,8 +11,8 @@
 }
 
 .user-title {
-  border-bottom-style: solid;
-  margin:15px;
+  text-decoration: underline;
+  margin: 0;
 }
 
 #icon-grid {
@@ -21,15 +21,15 @@
 
 #welcome {
   img {
-    margin-bottom: 20px;
+    margin: 20px 0;
   }
   h2 {
-    margin-bottom: 30px;
+    margin: 0;
   }
   .btn-primary {
     display: block;
     margin: auto;
-    width: 40%;
+    width: 50%;
     margin-bottom: 15px;
     color: #212529 !important;
     border: 0.1em solid;
